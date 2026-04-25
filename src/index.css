@@ -1,0 +1,32 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #F7F8F9;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 280px;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 75% 90% at 72% -15%,
+    #7fcadd 0%,
+    #a5daeb 18%,
+    #bfe8f3 30%,
+    rgba(195, 235, 244, 0.4) 48%,
+    transparent 65%
+  );
+}
+
+p { margin: 0; }

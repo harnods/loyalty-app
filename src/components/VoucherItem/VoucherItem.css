@@ -1,0 +1,67 @@
+.voucher-item {
+  background: #fff;
+  border: 1px solid #dcdfe4;
+  border-radius: 6px;
+  padding: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.voucher-item:hover { background: #fafbfc; }
+
+.voucher-item__thumb {
+  width: 56px;
+  height: 56px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.voucher-item__thumb img {
+  position: absolute;
+  max-width: none;
+  display: block;
+}
+
+.voucher-item__col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.voucher-item__name {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #272b32;
+}
+
+.voucher-item__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.voucher-item__meta span {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #656f80;
+  white-space: nowrap;
+}
+
+.voucher-item__dot {
+  display: inline-block;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #656f80;
+  flex-shrink: 0;
+}

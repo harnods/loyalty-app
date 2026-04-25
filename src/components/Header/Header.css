@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  flex-shrink: 0;
+}
+
+.header__logo img {
+  display: block;
+  width: 132px;
+  height: 56px;
+}
+
+.header__avatar {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.header__avatar img {
+  display: block;
+  width: 36px;
+  height: 36px;
+}

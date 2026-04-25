@@ -1,0 +1,69 @@
+.action-card {
+  flex: 1 0 0;
+  min-width: 0;
+  height: 160px;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 0.15s;
+}
+
+.action-card:hover { opacity: 0.88; }
+
+.action-card--blue   { background: #b5d9ff; }
+.action-card--orange { background: #ffe0c3; }
+.action-card--teal   { background: #d0f1f1; }
+
+.action-card__icon img {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.action-card__bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.action-card__label {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #272b32;
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+.action-card__arrow img {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+/* Small screens: stack vertically */
+@media (max-width: 360px) {
+  .action-card {
+    flex: none;
+    width: 100%;
+    height: auto;
+    min-height: 80px;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 12px;
+  }
+
+  .action-card__bottom {
+    flex: 1;
+    align-items: center;
+  }
+}
