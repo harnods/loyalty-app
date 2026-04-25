@@ -8,8 +8,29 @@
 }
 
 .warning-banner__icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
-  margin-top: 2px;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+.warning-banner__icon-path {
+  position: absolute;
+  top: 8.75%;
+  right: 6.25%;
+  bottom: 8.75%;
+  left: 6.25%;
+}
+
+.warning-banner__icon-path img {
+  position: absolute;
+  display: block;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
 }
 
 .warning-banner__text {
@@ -18,4 +39,8 @@
   font-weight: 400;
   line-height: 20px;
   color: #272b32;
+}
+
+.warning-banner__text strong {
+  font-weight: 600;
 }

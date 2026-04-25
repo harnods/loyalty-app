@@ -1,0 +1,261 @@
+.rr {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.rr__container {
+  padding: 0 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.rr__stage {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.rr__hero {
+  background: #f4faff;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rr__hero-title {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.2px;
+  color: #000000;
+}
+
+.rr__hero-desc {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #272b32;
+}
+
+/* Content wrapper */
+.rr__content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Filter section */
+.rr__filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Search bar */
+.rr__search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid rgba(29, 31, 36, 0.16);
+  border-radius: 999px;
+  background: white;
+}
+
+.rr__search-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.rr__search-icon-path {
+  position: absolute;
+  inset: 6.25%;
+}
+
+.rr__search-icon-path img {
+  position: absolute;
+  display: block;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+.rr__search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #272b32;
+}
+
+.rr__search-input::placeholder {
+  color: #8690a2;
+}
+
+/* Filter chips */
+.rr__chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.rr__chips::-webkit-scrollbar {
+  display: none;
+}
+
+.rr-chip {
+  flex-shrink: 0;
+  padding: 4px 12px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  background: #f0f1f3;
+  color: #272b32;
+}
+
+.rr-chip--active {
+  background: #4c5460;
+  color: #ffffff;
+}
+
+/* Reward list */
+.rr__list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Reward row */
+.rr-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f1f3;
+  overflow: hidden;
+}
+
+.rr-item--last {
+  border-bottom: none;
+}
+
+/* Thumbnail */
+.rr-item__thumb {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.rr-item__thumb-inner {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.rr-item__thumb-cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-width: none;
+  pointer-events: none;
+  border-radius: 6px;
+}
+
+/* Text column */
+.rr-item__col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.rr-item__name {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #272b32;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rr-item__name--locked {
+  color: #4c5460;
+}
+
+.rr-item__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rr-item__category {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #656f80;
+  white-space: nowrap;
+}
+
+.rr-item__lock-badge {
+  display: inline-block;
+  background: #4c5460;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 12px;
+  padding: 2px 4px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Points */
+.rr-item__points {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #272b32;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.rr-item__points--locked {
+  color: #4c5460;
+}

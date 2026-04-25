@@ -1,26 +1,39 @@
-.earn-points-page {
+.ep {
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 
-.earn-points-page__stage {
-  background: #f4faff;
-  overflow: hidden;
-  border-radius: 8px;
-  margin: 0 16px;
+/* 16px horizontal padding around the stage card */
+.ep__container {
+  padding: 0 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.earn-points-page__hero {
+/* White card with rounded corners */
+.ep__stage {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Blue hero area — BackNav + hero text both share this bg */
+.ep__hero {
+  background: #f4faff;
   padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  background: #f4faff;
 }
 
-.earn-points-page__hero-title {
+.ep__hero-title {
   margin: 0;
+  font-family: 'Inter', sans-serif;
   font-size: 24px;
   font-weight: 600;
   line-height: 32px;
@@ -28,18 +41,85 @@
   color: #000000;
 }
 
-.earn-points-page__hero-desc {
+.ep__hero-desc {
   margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #272b32;
+  white-space: pre-line;
+}
+
+/* Content wrapper — 16px padding, 24px gap between sections */
+.ep__content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Each section — 8px gap between title/intro/list/banner */
+.ep__section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ep__section-title {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  color: #272b32;
+}
+
+.ep__section-intro {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
   color: #272b32;
 }
 
-.earn-points-page__content {
-  padding: 16px;
+.ep__step-list {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  flex: 1;
+}
+
+.ep-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.ep-step__badge {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: #272b32;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  display: block;
+}
+
+.ep-step__text {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #272b32;
+}
+
+.ep-step__text strong {
+  font-weight: 600;
 }

@@ -10,10 +10,36 @@
   text-align: left;
 }
 
+.back-nav__icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.back-nav__icon-path {
+  position: absolute;
+  top: 26.25%;
+  right: 36.25%;
+  bottom: 26.25%;
+  left: 36.25%;
+}
+
+.back-nav__icon-path img {
+  position: absolute;
+  display: block;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
 .back-nav__label {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
   color: #272b32;
+  white-space: nowrap;
 }

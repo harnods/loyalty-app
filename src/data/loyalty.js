@@ -10,8 +10,15 @@ export const IMAGES = {
   iconHistory:  `${BASE}/007479f7-43a8-4be2-936e-d696e709ed83`,
   arrow:        `${BASE}/bc6b9046-4cb1-470b-801e-e976cf8a59c8`,
   mekariQontak: `${BASE}/1ceeadf7-c5fc-4956-b824-f38abd737d04`,
-  chevronLeft:  `${BASE}/5efb4458-b567-45e5-a016-3d5b70347841`,
-  warning:      `${BASE}/d3ddf8e8-f55c-44d1-bc63-5bf738b22361`,
+  chevronLeft:  `${BASE}/e219ddc3-67de-42c2-a472-0174a1e2401d`,
+  warning:      `${BASE}/5a22ace1-a8f2-48d8-9722-c85ee71af4fd`,
+  searchIcon:     `${BASE}/36988dd8-84fa-41dc-a49a-2f2230a2c859`,
+  rewardDripBag:  `${BASE}/6581378c-d56a-4928-b699-93c325aff99a`,
+  rewardOnigiri:  `${BASE}/46823361-ec71-4aba-a4d3-8fc0a05ff901`,
+  rewardDiscount: `${BASE}/33337a4d-94bf-4f89-a858-7d33823e4865`,
+  rewardToteBag:  `${BASE}/6d046049-b9aa-4d50-a5e6-a4fd3abcc2f5`,
+  rewardBento:    `${BASE}/3f01bddc-ca49-4140-9577-68eed5c7156e`,
+  rewardPourOver: `${BASE}/3fd97d2b-b766-4077-b1ed-658de263a536`,
 };
 
 export const USER = {
@@ -29,19 +36,51 @@ export const QUICK_ACTIONS = [
 
 export const EARN_POINTS = {
   hero: {
-    title: 'Earn Points',
-    description: 'Complete activities below to collect points and unlock exclusive rewards.',
+    title: 'Earn points with every purchase',
+    description: 'No complicated rules. Buy, get points.\nSpend Rp 10,000 = earn 10 points.',
   },
-  howItWorks: {
-    title: 'How it works',
-    steps: [
-      { id: 1, parts: [{ bold: true, text: 'Make a purchase' }, { bold: false, text: ' at any participating store or online.' }] },
-      { id: 2, parts: [{ bold: true, text: 'Scan your loyalty card' }, { bold: false, text: ' or enter your member ID at checkout.' }] },
-      { id: 3, parts: [{ bold: false, text: 'Points are ' }, { bold: true, text: 'automatically credited' }, { bold: false, text: ' to your account within 24 hours.' }] },
-      { id: 4, parts: [{ bold: false, text: 'Reach milestones to ' }, { bold: true, text: 'unlock higher tiers' }, { bold: false, text: ' and bigger rewards.' }] },
-    ],
-  },
-  warning: 'Points may take up to 24 hours to appear in your account. Contact support if points are missing after 48 hours.',
+  sections: [
+    {
+      id: 'how-it-works',
+      title: 'How it works',
+      steps: [
+        { id: 1, parts: [{ bold: true, text: 'At checkout' }, { bold: false, text: ', tell us your registered phone number or member ID' }] },
+        { id: 2, parts: [{ bold: true, text: 'We track it' }, { bold: false, text: ', points automatically add to your account' }] },
+        { id: 3, parts: [{ bold: true, text: 'Works everywhere' }, { bold: false, text: ', online purchase? Offline at the cafe? Both count' }] },
+      ],
+    },
+    {
+      id: 'redeem',
+      title: 'Redeem points for rewards',
+      intro: "Once you've got enough points, turn them into vouchers. Here's the flow:",
+      steps: [
+        { id: 1, parts: [{ bold: false, text: 'Go to Rewards section' }] },
+        { id: 2, parts: [{ bold: false, text: 'Pick a voucher' }] },
+        { id: 3, parts: [{ bold: false, text: 'Get your unique code' }] },
+        { id: 4, parts: [{ bold: false, text: 'Show the code to our barista at checkout' }] },
+      ],
+      warning: [
+        { bold: true, text: 'Vouchers expire 30 days after you redeem them.' },
+        { bold: false, text: ' Use them before the clock runs out.' },
+      ],
+    },
+  ],
+};
+
+export const POINTS_HISTORY = {
+  totalPoints: '1,250 pts',
+  groups: [
+    {
+      id: 'apr-2026',
+      month: 'April 2026',
+      transactions: [
+        { id: 1, title: 'In-store purchase',            date: '24 Apr, 14:22', location: 'Kemang Square', points: '+85'    },
+        { id: 2, title: 'Online order #A-44921',         date: '22 Apr, 10:30', location: 'Website',       points: '+120'   },
+        { id: 3, title: 'Redeemed: Free drip bag coffee',date: '19 Apr, 17:45', location: null,            points: '-45'    },
+        { id: 4, title: 'Welcome bonus',                 date: '19 Apr, 17:30', location: null,            points: '+1,000' },
+      ],
+    },
+  ],
 };
 
 export const VOUCHERS = [
@@ -62,3 +101,21 @@ export const VOUCHERS = [
     thumbStyle: { width: '118.31%', height: '157.14%', top: '-38.39%', left: '-0.23%' },
   },
 ];
+
+export const REDEEM_REWARDS = {
+  filters: ['All', 'Coffee', 'Matcha', 'Breakfast', 'Bento', 'Merch', 'Discount'],
+  rewards: [
+    { id: 'r1',  name: 'Free drip bag coffee',    category: 'Coffee',    points: '45pts',    locked: false, thumbKey: 'rewardDripBag',  thumbStyle: { width: '100%',    height: '133.51%', top: '-30.59%', left: '0'     } },
+    { id: 'r2',  name: 'Free onigiri of the day', category: 'Onigiri',   points: '45pts',    locked: false, thumbKey: 'rewardOnigiri',  thumbStyle: { width: '99.92%',  height: '110%',    top: '-5%',    left: '0.04%' } },
+    { id: 'r3',  name: '20% off next purchase',   category: 'Discount',  points: '200pts',   locked: false, thumbKey: 'rewardDiscount', thumbStyle: null },
+    { id: 'r4',  name: 'Signature tote bag',      category: 'Merch',     points: '1.200pts', locked: false, thumbKey: 'rewardToteBag',  thumbStyle: null },
+    { id: 'r5',  name: 'Free bento set',          category: 'Bento',     points: '500pts',   locked: false, thumbKey: 'rewardBento',    thumbStyle: null },
+    { id: 'r6',  name: 'Ceramic pour-over kit',   category: 'Merch',     points: '2.400pts', locked: true,  lockLabel: 'Unlock at platinum+', thumbKey: 'rewardPourOver', thumbStyle: null },
+    { id: 'r7',  name: 'Iced matcha latte',       category: 'Matcha',    points: '90pts',    locked: false, thumbKey: 'rewardDripBag',  thumbStyle: { width: '100%',    height: '133.51%', top: '-30.59%', left: '0'     } },
+    { id: 'r8',  name: 'Breakfast platter',       category: 'Breakfast', points: '350pts',   locked: false, thumbKey: 'rewardBento',    thumbStyle: null },
+    { id: 'r9',  name: 'Barista choice coffee',   category: 'Coffee',    points: '80pts',    locked: false, thumbKey: 'rewardOnigiri',  thumbStyle: { width: '99.92%',  height: '110%',    top: '-5%',    left: '0.04%' } },
+    { id: 'r10', name: 'Classic bento box',       category: 'Bento',     points: '180pts',   locked: false, thumbKey: 'rewardDiscount', thumbStyle: null },
+    { id: 'r11', name: 'Mochimoto tote bag',      category: 'Merch',     points: '800pts',   locked: false, thumbKey: 'rewardToteBag',  thumbStyle: null },
+    { id: 'r12', name: 'Limited edition tumbler', category: 'Merch',     points: '3.000pts', locked: true,  lockLabel: 'Unlock at platinum+', thumbKey: 'rewardPourOver', thumbStyle: null },
+  ],
+};

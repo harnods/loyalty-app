@@ -1,27 +1,58 @@
+import Header from '../../components/Header/Header'
 import BackNav from '../../components/BackNav/BackNav'
-import StepList from '../../components/StepList/StepList'
 import WarningBanner from '../../components/WarningBanner/WarningBanner'
 import Footer from '../../components/Footer/Footer'
-import { EARN_POINTS } from '../../data/loyalty'
+import { USER, EARN_POINTS } from '../../data/loyalty'
 import './EarnPointsPage.css'
+
+function StepItem({ step }) {
+  return (
+    <div className="ep-step">
+      <span className="ep-step__badge">{step.id}</span>
+      <p className="ep-step__text">
+        {step.parts.map((part, i) =>
+          part.bold
+            ? <strong key={i}>{part.text}</strong>
+            : <span key={i}>{part.text}</span>
+        )}
+      </p>
+    </div>
+  )
+}
 
 export default function EarnPointsPage() {
   return (
-    <div className="earn-points-page">
-      <div className="earn-points-page__stage">
-        <BackNav />
-        <div className="earn-points-page__hero">
-          <h1 className="earn-points-page__hero-title">{EARN_POINTS.hero.title}</h1>
-          <p className="earn-points-page__hero-desc">{EARN_POINTS.hero.description}</p>
-        </div>
-      </div>
+    <div className="ep">
+      <Header userName={USER.name} />
 
-      <div className="earn-points-page__content">
-        <StepList
-          title={EARN_POINTS.howItWorks.title}
-          steps={EARN_POINTS.howItWorks.steps}
-        />
-        <WarningBanner text={EARN_POINTS.warning} />
+      <div className="ep__container">
+        <div className="ep__stage">
+          <BackNav />
+
+          <div className="ep__hero">
+            <h1 className="ep__hero-title">{EARN_POINTS.hero.title}</h1>
+            <p className="ep__hero-desc">{EARN_POINTS.hero.description}</p>
+          </div>
+
+          <div className="ep__content">
+            {EARN_POINTS.sections.map((section) => (
+              <div key={section.id} className="ep__section">
+                <h2 className="ep__section-title">{section.title}</h2>
+                {section.intro && (
+                  <p className="ep__section-intro">{section.intro}</p>
+                )}
+                <div className="ep__step-list">
+                  {section.steps.map((step) => (
+                    <StepItem key={step.id} step={step} />
+                  ))}
+                </div>
+                {section.warning && (
+                  <WarningBanner parts={section.warning} />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       <Footer />
