@@ -1,0 +1,19 @@
+.back-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 8px;
+  background: #f4faff;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.back-nav__label {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #272b32;
+}

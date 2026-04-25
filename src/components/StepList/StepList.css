@@ -1,0 +1,51 @@
+.step-list__title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  color: #272b32;
+  margin: 0 0 8px;
+}
+
+.step-list__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.step-item__badge {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: #272b32;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  display: block;
+}
+
+.step-item__text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 24px;
+  color: #272b32;
+}
+
+.step-item__text strong {
+  font-weight: 600;
+}
+
+.step-item__text span {
+  font-weight: 400;
+}

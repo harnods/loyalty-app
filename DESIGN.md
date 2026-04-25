@@ -78,6 +78,71 @@
 | `VoucherItem` | `12:895, 12:973` | Single voucher row |
 | `VoucherSection` | `12:892` | Section with header + voucher list |
 | `Footer` | `12:1057` | Powered-by attribution |
+| `BackNav` | `14:1441` | Back button with chevron — bg `#f4faff`, padding `12px 8px`, gap `12px` |
+| `StepList` | `14:1447` | Numbered step list with mixed bold/regular inline text |
+| `WarningBanner` | `14:1456` | Warning callout — bg `#fdf6dd`, border-radius `6px`, padding `12px 16px`, gap `12px` |
+
+---
+
+## Earn Points Page (node `14-1438`)
+
+### Stage Card
+
+```
+background      : #f4faff
+border-radius   : 8px
+overflow        : hidden
+margin          : 0 16px
+```
+
+### BackNav
+
+```
+background      : #f4faff
+padding         : 12px 8px
+gap             : 12px
+icon            : chevron-left 20×20px
+label font      : 14px / 400 / 20px line-height / #272b32
+```
+
+### Page Hero
+
+```
+background      : #f4faff
+padding         : 16px
+gap             : 8px
+h1 font         : 24px / 600 / 32px / letter-spacing -0.2px / #000000
+body font       : 14px / 400 / 24px / #272b32
+```
+
+### Content Area
+
+```
+padding         : 16px
+gap             : 24px   (between StepList and WarningBanner)
+```
+
+### StepList
+
+```
+title font      : 20px / 600 / 32px / #272b32
+badge           : 24×24px / bg #272b32 / border-radius 999px / white 14px/400/24px
+step row        : padding 8px 0 / gap 12px (badge → text)
+text bold part  : 14px / 600
+text regular    : 14px / 400
+line-height     : 24px
+```
+
+### WarningBanner
+
+```
+background      : #fdf6dd
+border-radius   : 6px
+padding         : 12px 16px
+gap             : 12px
+icon            : warning 20×20px / margin-top 2px
+text font       : 14px / 400 / 20px / #272b32
+```
 
 ---
 

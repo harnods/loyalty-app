@@ -12,6 +12,7 @@ export default function QuickActions({ actions }) {
             color={action.color}
             icon={action.icon}
             label={action.label}
+            href={action.href}
           />
         ))}
       </div>

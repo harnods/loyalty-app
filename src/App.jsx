@@ -1,19 +1,15 @@
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
-import Header from './components/Header/Header'
-import PointsCard from './components/PointsCard/PointsCard'
-import QuickActions from './components/QuickActions/QuickActions'
-import VoucherSection from './components/VoucherSection/VoucherSection'
-import Footer from './components/Footer/Footer'
-import { USER, QUICK_ACTIONS, VOUCHERS } from './data/loyalty'
+import Home from './pages/Home/Home'
+import EarnPointsPage from './pages/EarnPoints/EarnPointsPage'
 
 export default function App() {
   return (
     <div className="shell">
-      <Header userName={USER.name} />
-      <PointsCard user={USER} />
-      <QuickActions actions={QUICK_ACTIONS} />
-      <VoucherSection vouchers={VOUCHERS} />
-      <Footer />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/earn-points" element={<EarnPointsPage />} />
+      </Routes>
     </div>
   )
 }

@@ -1,9 +1,15 @@
+import { useNavigate } from 'react-router-dom'
 import { IMAGES } from '../../data/loyalty'
 import './ActionCard.css'
 
-export default function ActionCard({ color, icon, label }) {
+export default function ActionCard({ color, icon, label, href }) {
+  const navigate = useNavigate()
+
   return (
-    <button className={`action-card action-card--${color}`}>
+    <button
+      className={`action-card action-card--${color}`}
+      onClick={() => href && navigate(href)}
+    >
       <div className="action-card__icon">
         <img src={icon} alt="" width={32} height={32} />
       </div>

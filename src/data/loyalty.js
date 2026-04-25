@@ -10,6 +10,8 @@ export const IMAGES = {
   iconHistory:  `${BASE}/007479f7-43a8-4be2-936e-d696e709ed83`,
   arrow:        `${BASE}/bc6b9046-4cb1-470b-801e-e976cf8a59c8`,
   mekariQontak: `${BASE}/1ceeadf7-c5fc-4956-b824-f38abd737d04`,
+  chevronLeft:  `${BASE}/5efb4458-b567-45e5-a016-3d5b70347841`,
+  warning:      `${BASE}/d3ddf8e8-f55c-44d1-bc63-5bf738b22361`,
 };
 
 export const USER = {
@@ -20,10 +22,27 @@ export const USER = {
 };
 
 export const QUICK_ACTIONS = [
-  { id: 'earn',    color: 'blue',   icon: IMAGES.iconEarn,    label: ['Earn', 'points']    },
-  { id: 'redeem',  color: 'orange', icon: IMAGES.iconRedeem,  label: ['Redeem', 'rewards'] },
-  { id: 'history', color: 'teal',   icon: IMAGES.iconHistory, label: ['Points', 'history'] },
+  { id: 'earn',    color: 'blue',   icon: IMAGES.iconEarn,    label: ['Earn', 'points'],    href: '/earn-points' },
+  { id: 'redeem',  color: 'orange', icon: IMAGES.iconRedeem,  label: ['Redeem', 'rewards'], href: '/redeem-rewards' },
+  { id: 'history', color: 'teal',   icon: IMAGES.iconHistory, label: ['Points', 'history'], href: '/points-history' },
 ];
+
+export const EARN_POINTS = {
+  hero: {
+    title: 'Earn Points',
+    description: 'Complete activities below to collect points and unlock exclusive rewards.',
+  },
+  howItWorks: {
+    title: 'How it works',
+    steps: [
+      { id: 1, parts: [{ bold: true, text: 'Make a purchase' }, { bold: false, text: ' at any participating store or online.' }] },
+      { id: 2, parts: [{ bold: true, text: 'Scan your loyalty card' }, { bold: false, text: ' or enter your member ID at checkout.' }] },
+      { id: 3, parts: [{ bold: false, text: 'Points are ' }, { bold: true, text: 'automatically credited' }, { bold: false, text: ' to your account within 24 hours.' }] },
+      { id: 4, parts: [{ bold: false, text: 'Reach milestones to ' }, { bold: true, text: 'unlock higher tiers' }, { bold: false, text: ' and bigger rewards.' }] },
+    ],
+  },
+  warning: 'Points may take up to 24 hours to appear in your account. Contact support if points are missing after 48 hours.',
+};
 
 export const VOUCHERS = [
   {

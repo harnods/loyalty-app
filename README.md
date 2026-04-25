@@ -46,7 +46,16 @@ loyalty/
     ├── App.css                 # Responsive shell widths
     ├── data/
     │   └── loyalty.js          # All static data + image URL constants
+    ├── pages/
+    │   ├── Home/
+    │   │   └── Home.jsx            # Home screen composition
+    │   └── EarnPoints/
+    │       ├── EarnPointsPage.jsx  # Earn points static page
+    │       └── EarnPointsPage.css
     └── components/
+        ├── BackNav/
+        │   ├── BackNav.jsx     # Back button with chevron
+        │   └── BackNav.css
         ├── Header/
         │   ├── Header.jsx      # Logo + avatar
         │   └── Header.css
@@ -59,12 +68,18 @@ loyalty/
         ├── ActionCard/
         │   ├── ActionCard.jsx  # Individual quick-action tile
         │   └── ActionCard.css
+        ├── StepList/
+        │   ├── StepList.jsx    # Numbered step list with mixed bold/regular text
+        │   └── StepList.css
         ├── VoucherSection/
         │   ├── VoucherSection.jsx  # Voucher list + "View all" header
         │   └── VoucherSection.css
         ├── VoucherItem/
         │   ├── VoucherItem.jsx # Single voucher row
         │   └── VoucherItem.css
+        ├── WarningBanner/
+        │   ├── WarningBanner.jsx  # Yellow warning callout
+        │   └── WarningBanner.css
         └── Footer/
             ├── Footer.jsx      # Powered-by attribution
             └── Footer.css
@@ -114,9 +129,11 @@ npm run preview
 
 - **Header** — machimoto logo + profile avatar
 - **Points card** — total points, tier badge (Platinum), hero coin illustration, last-updated timestamp
-- **Quick actions** — 3 interactive tiles: Earn points · Redeem rewards · Points history
+- **Quick actions** — 3 interactive tiles: Earn points · Redeem rewards · Points history; each navigates to its page
+- **Earn Points page** — static page with hero card, numbered how-it-works steps, and warning banner
 - **Voucher section** — list of active vouchers with thumbnail, code, and expiry
 - **Footer** — Powered by Mekari Qontak attribution
+- **Client-side routing** — react-router-dom v7 with `BrowserRouter`
 
 ### Responsive behaviour
 
@@ -149,6 +166,25 @@ All visual specifications live in [`DESIGN.md`](./DESIGN.md):
 ## Changelog
 
 All notable changes are documented here in reverse-chronological order.
+
+---
+
+### [0.3.0] — 2026-04-25
+
+#### Added
+- **Earn Points page** (`/earn-points`) — pixel-perfect from Figma node `14-1438`
+  - `BackNav` component — chevron + Back button, bg `#f4faff`
+  - `StepList` component — numbered steps with mixed bold/regular inline text
+  - `WarningBanner` component — yellow callout with warning icon, bg `#fdf6dd`
+- Client-side routing via react-router-dom v7 (`BrowserRouter` in `main.jsx`)
+- `pages/Home/` — home screen extracted from `App.jsx` into its own page component
+- `EARN_POINTS` data structure in `src/data/loyalty.js`
+- `chevronLeft` and `warning` icon URLs added to `IMAGES`
+
+#### Changed
+- `ActionCard` now accepts `href` prop and navigates via `useNavigate`
+- `App.jsx` refactored to routing shell (`Routes` + `Route`)
+- `DESIGN.md` updated with full Earn Points page token documentation
 
 ---
 

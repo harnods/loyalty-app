@@ -1,0 +1,45 @@
+.earn-points-page {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.earn-points-page__stage {
+  background: #f4faff;
+  overflow: hidden;
+  border-radius: 8px;
+  margin: 0 16px;
+}
+
+.earn-points-page__hero {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #f4faff;
+}
+
+.earn-points-page__hero-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.2px;
+  color: #000000;
+}
+
+.earn-points-page__hero-desc {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #272b32;
+}
+
+.earn-points-page__content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+}
