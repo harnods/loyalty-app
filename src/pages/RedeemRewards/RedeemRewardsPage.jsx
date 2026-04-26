@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Header from '../../components/Header/Header'
 import BackNav from '../../components/BackNav/BackNav'
 import Footer from '../../components/Footer/Footer'
+import RewardDetailSheet from '../../components/RewardDetailSheet/RewardDetailSheet'
 import { USER, IMAGES, REDEEM_REWARDS } from '../../data/loyalty'
 import './RedeemRewardsPage.css'
 
@@ -33,9 +34,15 @@ function RewardThumb({ reward }) {
   )
 }
 
-function RewardRow({ reward, isLast }) {
+function RewardRow({ reward, isLast, onSelect }) {
   return (
-    <div className={`rr-item${isLast ? ' rr-item--last' : ''}`}>
+    <div
+      className={`rr-item${isLast ? ' rr-item--last' : ''}`}
+      onClick={() => onSelect(reward)}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => e.key === 'Enter' && onSelect(reward)}
+    >
       <RewardThumb reward={reward} />
       <div className="rr-item__col">
         <p className={`rr-item__name${reward.locked ? ' rr-item__name--locked' : ''}`}>
@@ -58,6 +65,8 @@ function RewardRow({ reward, isLast }) {
 export default function RedeemRewardsPage() {
   const [activeFilter, setActiveFilter] = useState('All')
   const [query, setQuery] = useState('')
+  const [selected, setSelected] = useState(null)
+
   const filtered = REDEEM_REWARDS.rewards.filter((r) => {
     const matchesFilter = activeFilter === 'All' || r.category === activeFilter
     const matchesQuery = r.name.toLowerCase().includes(query.toLowerCase())
@@ -111,6 +120,7 @@ export default function RedeemRewardsPage() {
                   key={reward.id}
                   reward={reward}
                   isLast={i === filtered.length - 1}
+                  onSelect={setSelected}
                 />
               ))}
             </div>
@@ -119,6 +129,13 @@ export default function RedeemRewardsPage() {
       </div>
 
       <Footer />
+
+      {selected && (
+        <RewardDetailSheet
+          reward={selected}
+          onClose={() => setSelected(null)}
+        />
+      )}
     </div>
   )
 }

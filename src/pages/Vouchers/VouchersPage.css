@@ -1,0 +1,44 @@
+.vp-container {
+  padding: 0 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.vp-stage {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.vp-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.vp-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vp-group__label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #656f80;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.vp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

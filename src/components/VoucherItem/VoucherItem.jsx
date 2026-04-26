@@ -1,8 +1,12 @@
 import './VoucherItem.css'
 
-export default function VoucherItem({ name, code, expiry, thumb, thumbStyle }) {
+export default function VoucherItem({ name, code, expiry, thumb, thumbStyle, onClick, faded }) {
   return (
-    <div className="voucher-item">
+    <div
+      className={`voucher-item${faded ? ' voucher-item--faded' : ''}`}
+      onClick={onClick} role="button" tabIndex={0}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onClick?.() }}
+    >
       <div className="voucher-item__thumb">
         <img src={thumb} alt={name} style={thumbStyle} />
       </div>

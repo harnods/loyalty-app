@@ -57,6 +57,10 @@
   white-space: nowrap;
 }
 
+.voucher-item--faded {
+  opacity: 0.55;
+}
+
 .voucher-item__dot {
   display: inline-block;
   width: 2px;

@@ -1,0 +1,232 @@
+/* Overlay */
+.vds-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transition: background 0.28s ease;
+  pointer-events: none;
+}
+
+.vds-overlay--open {
+  background: rgba(0, 0, 0, 0.4);
+  pointer-events: auto;
+}
+
+/* Sheet */
+.vds-sheet {
+  width: 100%;
+  max-width: 393px;
+  background: white;
+  border-radius: 32px 32px 0 0;
+  padding: 32px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  max-height: 92vh;
+  transform: translateY(100%);
+  transition: transform 0.28s ease;
+  pointer-events: auto;
+}
+
+.vds-sheet--open {
+  transform: translateY(0);
+}
+
+@media (min-width: 600px) {
+  .vds-sheet { max-width: 520px; }
+}
+
+@media (min-width: 1024px) {
+  .vds-sheet { max-width: 684px; }
+}
+
+/* Header */
+.vds-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.vds-close {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  overflow: hidden;
+}
+
+.vds-close__path {
+  position: absolute;
+  inset: 16.25%;
+}
+
+.vds-close__path img {
+  position: absolute;
+  display: block;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+/* Title */
+.vds-title-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.vds-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.2px;
+  color: #272b32;
+  text-align: center;
+}
+
+/* Hint */
+.vds-hint-section {
+  display: flex;
+  justify-content: center;
+}
+
+.vds-hint {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #656f80;
+  text-align: center;
+}
+
+/* Voucher code card */
+.vds-code-card {
+  width: 100%;
+  background: #f4faff;
+  border: 1px solid #7586e5;
+  border-radius: 6px;
+  padding: 0 12px;
+}
+
+.vds-code-card__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f1f3;
+}
+
+.vds-code-card__label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #272b32;
+  text-align: center;
+}
+
+.vds-code-card__code {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  color: #272b32;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.vds-code-card--expired {
+  background: #f7f8f9;
+  border-color: #dcdfe4;
+  opacity: 0.7;
+}
+
+.vds-code-card__bottom {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.vds-code-card__expiry {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #272b32;
+  text-align: center;
+}
+
+/* Details card */
+.vds-details {
+  width: 100%;
+  border: 1px solid #dcdfe4;
+  border-radius: 6px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.vds-details__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #272b32;
+}
+
+/* Status badge */
+.vds-status-badge {
+  background: #1c8459;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 0 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.vds-status-badge--expired {
+  background: #656f80;
+}
+
+/* Button */
+.vds-btn-group {
+  width: 100%;
+}
+
+.vds-btn-close {
+  width: 100%;
+  background: white;
+  border: 1px solid #dcdfe4;
+  border-radius: 999px;
+  padding: 12px 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #4b61dc;
+  text-align: center;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.vds-btn-close:hover {
+  opacity: 0.88;
+}
