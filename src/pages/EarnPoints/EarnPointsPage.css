@@ -4,9 +4,8 @@
   flex: 1;
 }
 
-/* 16px horizontal padding around the stage card */
 .ep__container {
-  padding: 0 16px;
+  padding: 0;
   flex: 1;
   display: flex;
   flex-direction: column;
