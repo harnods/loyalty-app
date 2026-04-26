@@ -11,10 +11,6 @@ body {
   -webkit-font-smoothing: antialiased;
   background: #F7F8F9;
   min-height: 100vh;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-
 }
 
 body::before {

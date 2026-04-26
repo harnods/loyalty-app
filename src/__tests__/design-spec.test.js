@@ -51,12 +51,27 @@ describe('Shell (.shell) — App.css', () => {
     expect(prop(block, 'width')).toBe('100%')
   })
 
+  it('is centered via margin auto', () => {
+    expect(prop(block, 'margin')).toBe('0 auto')
+  })
+
   it('has 16px horizontal padding (gutter lives here, not in sections)', () => {
     expect(prop(block, 'padding')).toBe('0 16px')
   })
 
   it('does not set max-width at base mobile breakpoint', () => {
     expect(prop(block, 'max-width')).toBeNull()
+  })
+})
+
+// ─── Body ─────────────────────────────────────────────────────────────────────
+
+describe('Body — index.css', () => {
+  const src = css('src/index.css')
+  const block = extractRule(src, 'body')
+
+  it('does not use flex centering (causes shell width to be content-sized)', () => {
+    expect(prop(block, 'display')).not.toBe('flex')
   })
 })
 
