@@ -181,14 +181,81 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-  color: #656f80;
+  color: #272b32;
+  margin-bottom: 24px;
+}
+
+.auth-otp-inputs {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.auth-otp-box {
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 52px;
+  max-height: 52px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  color: #272b32;
+  outline: none;
+  background: white;
+  transition: border-color 0.15s;
+}
+
+.auth-otp-box:focus {
+  border-color: #272b32;
+}
+
+.auth-otp-box--error {
+  border-color: #e5443a;
+}
+
+.auth-error--center {
+  text-align: center;
+  margin-top: -12px;
   margin-bottom: 20px;
 }
 
-.auth-input--otp {
-  font-size: 24px;
+.auth-resend-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.auth-resend-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #272b32;
+}
+
+.auth-resend-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.4em;
-  text-align: center;
-  padding: 12px;
+  color: #272b32;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.auth-resend-btn:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 1024px) {
+  .auth-wrapper {
+    max-width: 440px;
+    margin: 0 auto;
+    width: 100%;
+  }
 }
