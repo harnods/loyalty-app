@@ -1,16 +1,24 @@
 .shell {
   width: 100%;
-  max-width: 393px;
   min-height: 100vh;
   background: transparent;
   position: relative;
   display: flex;
   flex-direction: column;
   z-index: 1;
+  padding: 0 16px;
 }
 
 @media (min-width: 600px) {
-  .shell { max-width: 520px; }
+  .shell {
+    max-width: 520px;
+  }
+}
+
+@media (min-width: 768px) {
+  .shell {
+    min-width: 520px;
+  }
 }
 
 @media (min-width: 1024px) {
