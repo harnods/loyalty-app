@@ -44,6 +44,8 @@ loyalty/
     ├── index.css               # Global reset + body gradient
     ├── App.jsx                 # Router shell — all Route declarations
     ├── App.css                 # Responsive shell widths
+    ├── contexts/
+    │   └── AuthContext.jsx      # Auth state + localStorage persistence
     ├── data/
     │   └── loyalty.js          # All static data + image URL constants
     ├── pages/
@@ -58,9 +60,14 @@ loyalty/
     │   ├── RedeemRewards/
     │   │   ├── RedeemRewardsPage.jsx   # Search + category filter
     │   │   └── RedeemRewardsPage.css
-    │   └── Vouchers/
-    │       ├── VouchersPage.jsx        # All vouchers, active/expired groups
-    │       └── VouchersPage.css
+    │   ├── Vouchers/
+    │   │   ├── VouchersPage.jsx        # All vouchers, active/expired groups
+    │   │   └── VouchersPage.css
+    │   └── Auth/
+    │       ├── auth.css                # Shared auth page styles
+    │       ├── SignInPage.jsx          # Phone number + Send OTP
+    │       ├── SignUpPage.jsx          # Name + phone + Send OTP
+    │       └── OtpPage.jsx            # OTP entry + verify
     └── components/
         ├── BackNav/
         │   ├── BackNav.jsx     # Back button with chevron
@@ -142,6 +149,7 @@ npm run preview
 
 ### Implemented
 
+- **Auth flow** — Sign in and Sign up with phone number + OTP (dummy `123456`); session persisted in `localStorage`; all app routes protected; unauthenticated users redirected to `/login`
 - **Header** — machimoto logo + profile avatar
 - **Points card** — total points, tier badge (Platinum), hero coin illustration, last-updated timestamp
 - **Quick actions** — 3 interactive tiles: Earn points · Redeem rewards · Points history
@@ -185,6 +193,23 @@ All visual specifications live in [`DESIGN.md`](./DESIGN.md):
 ## Changelog
 
 All notable changes are documented here in reverse-chronological order.
+
+---
+
+### [0.6.0] — 2026-04-26
+
+#### Added
+- **Auth flow** — full sign-in and sign-up with phone + OTP
+  - `SignInPage` (`/login`) — phone number input → Send OTP
+  - `SignUpPage` (`/signup`) — name + phone input → Send OTP
+  - `OtpPage` (`/otp`) — 6-digit OTP input; dummy code `123456`; masked phone display; Resend OTP
+  - `AuthContext` — `user` state, `login()`, `logout()`; persisted in `localStorage`
+- **Route protection** — `ProtectedRoute` in `App.jsx` redirects unauthenticated users to `/login`; already-logged-in users visiting `/login` or `/signup` are redirected to `/`
+- Auth pages share design tokens with the rest of the app: same card shadow (elevation-M), same blue CTA button, same Mekari Qontak footer, same Inter typography
+
+#### Changed
+- `main.jsx` wraps app with `AuthProvider`
+- `App.jsx` imports and protects all existing routes
 
 ---
 

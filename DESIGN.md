@@ -131,14 +131,21 @@ Left and right gutter is always **16px** at every breakpoint. The stage card sit
 ### Routing
 
 ```
-/                → Home
-/earn-points     → EarnPointsPage
-/points-history  → PointsHistoryPage
-/redeem-rewards  → RedeemRewardsPage
-/vouchers        → VouchersPage
+/login           → SignInPage      (public)
+/signup          → SignUpPage      (public)
+/otp             → OtpPage        (public, requires location.state)
+/                → Home           (protected)
+/earn-points     → EarnPointsPage (protected)
+/points-history  → PointsHistoryPage (protected)
+/redeem-rewards  → RedeemRewardsPage (protected)
+/vouchers        → VouchersPage   (protected)
 ```
 
 Router: `react-router-dom v7`, `BrowserRouter` in `main.jsx`, `Routes`/`Route` in `App.jsx`.
+
+**Protected routes:** `ProtectedRoute` in `App.jsx` checks `AuthContext.user`; redirects to `/login` if null. Auth pages redirect to `/` if already logged in.
+
+**Auth persistence:** `localStorage` key `loyalty_user` stores `{ name, phone }` as JSON. Read on mount via `useState` initializer in `AuthContext`.
 
 ---
 
@@ -236,6 +243,65 @@ Array of `{ id, color, icon, label: [line1, line2], href }`. Maps to ActionCard 
     voucherExpiry,      // e.g. 'Expires 15 May 2026'
   }]
 }
+```
+
+---
+
+---
+
+## Auth Pages
+
+**Figma node:** `22-4226`  
+**Files:** `src/pages/Auth/` + `src/contexts/AuthContext.jsx`
+
+All three auth pages share `auth.css` and the same layout structure:
+
+```
+auth-page (flex: 1, flex-direction: column, padding-top: 80px)
+└─ auth-wrapper (flex: 1, flex-col, justify-content: space-between, padding: 0 16px)
+   ├─ auth-card (white, border-radius: 12px, shadow elevation-M, padding: 24px)
+   │   ├─ auth-card__header (flex-col, gap: 32px, padding-bottom: 20px)
+   │   │   logo (132×56px, IMAGES.logo)
+   │   │   title (24px / 600 / -0.2px / #272b32)
+   │   └─ auth-form (flex-col)
+   │       input groups + button group
+   └─ auth-footer (flex-col, align-items: center, gap: 4px, padding: 12px 0 24px)
+       "Powered by" (14px / 400 / #656f80)
+       IMAGES.mekariQontak logo (78×24px)
+```
+
+### Sign In (`/login`)
+
+- Phone number label + input
+- Send OTP button → navigates to `/otp` with `state: { mode: 'signin', phone }`
+- "Don't have an account? Sign up" link → `/signup`
+
+### Sign Up (`/signup`)
+
+- Full name label + input
+- Phone number label + input
+- Send OTP button → navigates to `/otp` with `state: { mode: 'signup', phone, name }`
+- "Already have an account? Sign in" link → `/login`
+
+### OTP (`/otp`)
+
+- Requires `location.state.phone`; redirects to `/login` if missing
+- Hint: "We sent the code to {maskedPhone}" (format: `0812****789`)
+- Single OTP input: `type="tel"`, `maxLength=6`, centered, `font-size: 24px`, `letter-spacing: 0.4em`
+- Verify button: checks against dummy code `123456`; on match → calls `login({ name, phone })` → navigates to `/`
+- "Didn't receive it? Resend OTP" — clears input, shows "OTP resent!" for 3 s
+
+### Input spec (shared)
+
+```
+background: white
+border: 1px solid rgba(29, 31, 36, 0.16)
+border-radius: 6px
+padding: 8px 12px
+font: 14px / 400 / #272b32
+focus border-color: #4b61dc
+error border-color: #e5443a
+placeholder color: #8690a2
 ```
 
 ---
