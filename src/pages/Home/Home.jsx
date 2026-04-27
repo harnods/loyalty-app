@@ -15,7 +15,7 @@ export default function Home() {
       <Header userName={USER.name} />
       <PointsCard user={USER} />
       <QuickActions actions={QUICK_ACTIONS} />
-      <VoucherSection vouchers={VOUCHERS} onSelect={setSelectedVoucher} />
+      <VoucherSection vouchers={VOUCHERS.filter((v) => v.status === 'Active')} onSelect={setSelectedVoucher} />
       <Footer />
       {selectedVoucher && (
         <VoucherDetailSheet

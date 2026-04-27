@@ -69,3 +69,29 @@
   background: #656f80;
   flex-shrink: 0;
 }
+
+/* Vertical layout variant */
+.voucher-item--vertical {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.voucher-item--vertical .voucher-item__col {
+  gap: 2px;
+  width: 100%;
+}
+
+.voucher-item--vertical .voucher-item__name {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.voucher-item__meta-line {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #656f80;
+}
