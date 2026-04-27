@@ -18,7 +18,7 @@ export default function PointsCard({ user }) {
             <span>{user.tier}</span>
           </div>
 
-          <p className="points-card__updated">{user.lastUpdated}</p>
+          <p className="points-card__updated">{user.memberId}</p>
         </div>
 
         <div className="points-card__hero" aria-hidden="true">

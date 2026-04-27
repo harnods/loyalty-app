@@ -18,7 +18,21 @@ export default function VoucherDetailSheet({ voucher, onClose }) {
   }
 
   const isExpired = voucher.status === 'Expired'
-  const expiryFull = voucher.expiry.replace('Exp.', isExpired ? 'Expired' : 'Expires')
+  const isUsed    = voucher.status === 'Used'
+  const isInactive = isExpired || isUsed
+
+  const codeCardClass = `vds-code-card${isExpired ? ' vds-code-card--expired' : isUsed ? ' vds-code-card--used' : ''}`
+  const badgeClass    = `vds-status-badge${isExpired ? ' vds-status-badge--expired' : isUsed ? ' vds-status-badge--used' : ''}`
+
+  const hint = isExpired
+    ? 'This voucher has expired and can no longer be used.'
+    : isUsed
+    ? 'This voucher has already been used.'
+    : 'Show this code at the cashier in any store.'
+
+  const codeCardBottom = isUsed
+    ? `Used on ${voucher.usedDate}`
+    : voucher.expiry.replace('Exp.', isExpired ? 'Expired' : 'Expires')
 
   return (
     <div
@@ -46,21 +60,17 @@ export default function VoucherDetailSheet({ voucher, onClose }) {
 
         {/* Hint */}
         <div className="vds-hint-section">
-          <p className="vds-hint">
-            {isExpired
-              ? 'This voucher has expired and can no longer be used.'
-              : 'Show this code at the cashier in any store.'}
-          </p>
+          <p className="vds-hint">{hint}</p>
         </div>
 
         {/* Voucher code card */}
-        <div className={`vds-code-card${isExpired ? ' vds-code-card--expired' : ''}`}>
+        <div className={codeCardClass}>
           <div className="vds-code-card__top">
             <p className="vds-code-card__label">Voucher code</p>
             <p className="vds-code-card__code">{voucher.code}</p>
           </div>
           <div className="vds-code-card__bottom">
-            <p className="vds-code-card__expiry">{expiryFull}</p>
+            <p className="vds-code-card__expiry">{codeCardBottom}</p>
           </div>
         </div>
 
@@ -68,9 +78,7 @@ export default function VoucherDetailSheet({ voucher, onClose }) {
         <div className="vds-details">
           <div className="vds-details__row">
             <span>Status</span>
-            <span className={`vds-status-badge${voucher.status === 'Expired' ? ' vds-status-badge--expired' : ''}`}>
-              {voucher.status}
-            </span>
+            <span className={badgeClass}>{voucher.status}</span>
           </div>
           <div className="vds-details__row">
             <span>Cost</span>
@@ -80,6 +88,12 @@ export default function VoucherDetailSheet({ voucher, onClose }) {
             <span>Redeemed date</span>
             <span>{voucher.redeemedDate}</span>
           </div>
+          {isUsed && (
+            <div className="vds-details__row">
+              <span>Used date</span>
+              <span>{voucher.usedDate}</span>
+            </div>
+          )}
         </div>
 
         {/* Close button */}

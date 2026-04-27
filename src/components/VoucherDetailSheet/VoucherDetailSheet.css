@@ -206,6 +206,16 @@
   background: #656f80;
 }
 
+.vds-status-badge--used {
+  background: #4b61dc;
+}
+
+.vds-code-card--used {
+  background: #f7f8f9;
+  border-color: #dcdfe4;
+  opacity: 0.7;
+}
+
 /* Button */
 .vds-btn-group {
   width: 100%;
