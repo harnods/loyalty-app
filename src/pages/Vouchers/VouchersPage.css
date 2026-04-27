@@ -88,7 +88,15 @@
   transform: rotate(90deg);
 }
 
-.vp-accordion-chevron img {
+.vp-accordion-chevron__path {
+  position: absolute;
+  top: 26.25%;
+  right: 36.25%;
+  bottom: 26.25%;
+  left: 36.25%;
+}
+
+.vp-accordion-chevron__path img {
   position: absolute;
   display: block;
   inset: 0;

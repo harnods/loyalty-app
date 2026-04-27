@@ -19,7 +19,9 @@ function AccordionGroup({ label, items, onSelect }) {
       >
         <span className="vp-group__label">{label}</span>
         <span className={`vp-accordion-chevron${open ? ' vp-accordion-chevron--open' : ''}`}>
-          <img src={IMAGES.chevronLeft} alt="" />
+          <span className="vp-accordion-chevron__path">
+            <img src={IMAGES.chevronLeft} alt="" />
+          </span>
         </span>
       </button>
       {open && (
