@@ -1,0 +1,307 @@
+/* ── Overlay ─────────────────────────────────────────────────────────────── */
+.ps-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 300;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transition: background 0.28s ease;
+  pointer-events: none;
+}
+
+.ps-overlay--open {
+  background: rgba(0, 0, 0, 0.4);
+  pointer-events: auto;
+}
+
+/* ── Sheet ───────────────────────────────────────────────────────────────── */
+.ps-sheet {
+  width: 100%;
+  max-width: 393px;
+  background: white;
+  border-radius: 32px 32px 0 0;
+  padding: 28px 24px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  pointer-events: auto;
+  transform: translateY(100%);
+  transition: transform 0.28s ease;
+}
+
+.ps-sheet--open {
+  transform: translateY(0);
+}
+
+@media (min-width: 600px) { .ps-sheet { max-width: 520px; } }
+@media (min-width: 1024px) { .ps-sheet { max-width: 684px; } }
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.ps-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.ps-close {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  overflow: hidden;
+}
+
+.ps-close__path {
+  position: absolute;
+  inset: 16.25%;
+}
+
+.ps-close__path img {
+  position: absolute;
+  display: block;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+.ps-close-placeholder {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+/* ── Step progress dots ──────────────────────────────────────────────────── */
+.ps-progress {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ps-progress__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #dcdfe4;
+  transition: background 0.2s, width 0.2s;
+}
+
+.ps-progress__dot--active {
+  width: 20px;
+  border-radius: 3px;
+  background: #4b61dc;
+}
+
+.ps-progress__dot--done {
+  background: #4b61dc;
+  opacity: 0.35;
+}
+
+/* ── Body ────────────────────────────────────────────────────────────────── */
+.ps-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ps-body--success {
+  align-items: center;
+  padding: 24px 0 8px;
+  gap: 12px;
+}
+
+/* ── Typography ──────────────────────────────────────────────────────────── */
+.ps-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: -0.2px;
+  color: #272b32;
+  margin: 0 0 4px;
+}
+
+.ps-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #656f80;
+  margin: 0 0 20px;
+}
+
+.ps-test-hint {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #8690a2;
+  margin: -12px 0 20px;
+}
+
+/* ── OTP inputs ──────────────────────────────────────────────────────────── */
+.ps-otp-inputs {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.ps-otp-box {
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 52px;
+  max-height: 52px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  color: #272b32;
+  outline: none;
+  background: white;
+  transition: border-color 0.15s;
+}
+
+.ps-otp-box:focus {
+  border-color: #272b32;
+}
+
+.ps-otp-box--error {
+  border-color: #e5443a;
+}
+
+/* ── Resend ──────────────────────────────────────────────────────────────── */
+.ps-resend {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.ps-resend__text {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #656f80;
+}
+
+.ps-resend__btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #272b32;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.ps-resend__btn:hover { text-decoration: underline; }
+
+/* ── PIN dot indicators ──────────────────────────────────────────────────── */
+.ps-pin-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0 24px;
+  cursor: text;
+  position: relative;
+}
+
+.ps-pin-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid #dcdfe4;
+  background: white;
+  flex-shrink: 0;
+  transition: background 0.12s, border-color 0.12s, transform 0.12s;
+}
+
+.ps-pin-dot--filled {
+  background: #272b32;
+  border-color: #272b32;
+  transform: scale(1.1);
+}
+
+.ps-pin-dot--error {
+  background: #e5443a;
+  border-color: #e5443a;
+}
+
+.ps-pin-hidden {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+}
+
+/* ── Error ───────────────────────────────────────────────────────────────── */
+.ps-error {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #e5443a;
+  margin: 0;
+}
+
+.ps-error--center {
+  text-align: center;
+  margin-top: -8px;
+}
+
+/* ── Shake animation ─────────────────────────────────────────────────────── */
+@keyframes ps-shake {
+  0%, 100% { transform: translateX(0); }
+  15%       { transform: translateX(-8px); }
+  30%       { transform: translateX(8px); }
+  45%       { transform: translateX(-6px); }
+  60%       { transform: translateX(6px); }
+  75%       { transform: translateX(-3px); }
+  90%       { transform: translateX(3px); }
+}
+
+.ps-shake {
+  animation: ps-shake 0.55s ease;
+}
+
+/* ── Success ─────────────────────────────────────────────────────────────── */
+.ps-success-icon {
+  width: 56px;
+  height: 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ps-success-icon img {
+  position: absolute;
+  display: block;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+.ps-body--success .ps-title {
+  font-size: 18px;
+  text-align: center;
+  margin: 0;
+}
+
+.ps-body--success .ps-subtitle {
+  text-align: center;
+  margin: 0;
+}

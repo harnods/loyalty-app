@@ -42,7 +42,11 @@ export default function OtpPage() {
       name: mode === 'signup' ? name : 'Dona',
       phone,
     })
-    navigate('/', { replace: true })
+    if (mode === 'signup') {
+      navigate('/', { replace: true, state: { setupPin: true } })
+    } else {
+      navigate('/', { replace: true })
+    }
   }
 
   function handleOtpChange(index, value) {

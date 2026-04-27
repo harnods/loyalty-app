@@ -1,19 +1,28 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import Header from '../../components/Header/Header'
 import BackNav from '../../components/BackNav/BackNav'
 import Footer from '../../components/Footer/Footer'
-import { USER } from '../../data/loyalty'
+import PinSheet from '../../components/PinSheet/PinSheet'
+import { USER, IMAGES } from '../../data/loyalty'
 import './AccountPage.css'
 
 export default function AccountPage() {
-  const { user, logout } = useAuth()
+  const { user, logout, savePin } = useAuth()
   const navigate = useNavigate()
+  const [pinSheetMode, setPinSheetMode] = useState(null) // null | 'create' | 'change'
 
   function handleSignOut() {
     logout()
     navigate('/login', { replace: true })
   }
+
+  function handlePinSuccess(pin) {
+    savePin(pin)
+  }
+
+  const hasPin = Boolean(user?.pin)
 
   return (
     <div className="ac">
@@ -28,6 +37,7 @@ export default function AccountPage() {
           </div>
 
           <div className="ac__content">
+            {/* Profile info */}
             <div className="ac-group ac-group--bordered">
               <div className="ac-item">
                 <p className="ac-item__label">Name</p>
@@ -47,6 +57,33 @@ export default function AccountPage() {
               </div>
             </div>
 
+            {/* Security — PIN */}
+            <div className="ac-group ac-group--bordered">
+              <p className="ac-section-label">Security</p>
+              <button
+                className="ac-pin-row"
+                onClick={() => setPinSheetMode(hasPin ? 'change' : 'create')}
+              >
+                <span className="ac-pin-row__label">PIN</span>
+                <span className="ac-pin-row__right">
+                  {hasPin ? (
+                    <>
+                      <span className="ac-pin-row__dots">●●●●●●</span>
+                      <span className="ac-pin-row__action">Change</span>
+                    </>
+                  ) : (
+                    <span className="ac-pin-row__action ac-pin-row__action--setup">Set up</span>
+                  )}
+                  <span className="ac-pin-row__chevron">
+                    <span className="ac-pin-row__chevron-path">
+                      <img src={IMAGES.chevronLeft} alt="" style={{ transform: 'rotate(180deg)' }} />
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
+
+            {/* Sign out */}
             <div className="ac-group">
               <button className="ac-signout" onClick={handleSignOut}>
                 Sign out
@@ -57,6 +94,16 @@ export default function AccountPage() {
       </div>
 
       <Footer />
+
+      {pinSheetMode && (
+        <PinSheet
+          mode={pinSheetMode}
+          phone={user?.phone}
+          dismissable
+          onClose={() => setPinSheetMode(null)}
+          onSuccess={handlePinSuccess}
+        />
+      )}
     </div>
   )
 }

@@ -20,8 +20,14 @@ export function AuthProvider({ children }) {
     localStorage.removeItem('loyalty_user')
   }
 
+  function savePin(pin) {
+    const updated = { ...user, pin }
+    setUser(updated)
+    localStorage.setItem('loyalty_user', JSON.stringify(updated))
+  }
+
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, savePin }}>
       {children}
     </AuthContext.Provider>
   )

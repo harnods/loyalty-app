@@ -82,6 +82,91 @@
   color: #272b32;
 }
 
+/* Section label */
+.ac-section-label {
+  margin: 0 0 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #656f80;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 8px 0 0;
+}
+
+/* PIN row */
+.ac-pin-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 10px 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.ac-pin-row__label {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #272b32;
+}
+
+.ac-pin-row__right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ac-pin-row__dots {
+  font-family: 'Inter', sans-serif;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #656f80;
+}
+
+.ac-pin-row__action {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #656f80;
+}
+
+.ac-pin-row__action--setup {
+  font-weight: 600;
+  color: #4b61dc;
+}
+
+.ac-pin-row__chevron {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.ac-pin-row__chevron-path {
+  position: absolute;
+  top: 26.25%;
+  right: 36.25%;
+  bottom: 26.25%;
+  left: 36.25%;
+}
+
+.ac-pin-row__chevron-path img {
+  position: absolute;
+  display: block;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
 /* Sign out button */
 .ac-signout {
   background: none;
