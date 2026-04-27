@@ -6,6 +6,7 @@ import EarnPointsPage from './pages/EarnPoints/EarnPointsPage'
 import PointsHistoryPage from './pages/PointsHistory/PointsHistoryPage'
 import RedeemRewardsPage from './pages/RedeemRewards/RedeemRewardsPage'
 import VouchersPage from './pages/Vouchers/VouchersPage'
+import AccountPage from './pages/Account/AccountPage'
 import SignInPage from './pages/Auth/SignInPage'
 import SignUpPage from './pages/Auth/SignUpPage'
 import OtpPage from './pages/Auth/OtpPage'
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/points-history" element={<ProtectedRoute><PointsHistoryPage /></ProtectedRoute>} />
         <Route path="/redeem-rewards" element={<ProtectedRoute><RedeemRewardsPage /></ProtectedRoute>} />
         <Route path="/vouchers" element={<ProtectedRoute><VouchersPage /></ProtectedRoute>} />
+        <Route path="/account" element={<ProtectedRoute><AccountPage /></ProtectedRoute>} />
       </Routes>
     </div>
   )

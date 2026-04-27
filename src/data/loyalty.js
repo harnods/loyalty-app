@@ -27,7 +27,8 @@ export const USER = {
   name: 'Dona',
   points: '1,250',
   tier: 'Platinum',
-  lastUpdated: 'Last updated just now',
+  memberId: 'MC-10090',
+  memberSince: '12 Jan 2026',
 };
 
 export const QUICK_ACTIONS = [
