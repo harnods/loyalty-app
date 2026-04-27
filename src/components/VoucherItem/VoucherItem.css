@@ -70,16 +70,13 @@
   flex-shrink: 0;
 }
 
-/* Vertical layout variant */
+/* Vertical text layout — row stays: thumb left, col right */
 .voucher-item--vertical {
-  flex-direction: column;
   align-items: flex-start;
-  gap: 2px;
 }
 
 .voucher-item--vertical .voucher-item__col {
   gap: 2px;
-  width: 100%;
 }
 
 .voucher-item--vertical .voucher-item__name {
