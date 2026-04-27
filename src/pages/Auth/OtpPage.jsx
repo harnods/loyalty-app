@@ -106,6 +106,7 @@ export default function OtpPage() {
             <p className="auth-otp-hint">
               Enter the OTP sent to {formattedPhone}
             </p>
+            <p className="auth-otp-test-hint">Use <strong>123456</strong> for testing</p>
             <div className="auth-otp-inputs">
               {otp.map((digit, index) => (
                 <input
