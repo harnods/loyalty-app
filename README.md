@@ -1,6 +1,6 @@
 # Loyalty Portal
 
-A mobile-first web app for the Qontak customer loyalty program — built from a pixel-perfect Figma spec and delivered as a componentised React application.
+A mobile-first web app for the Qontak customer loyalty program.
 
 ---
 
@@ -150,7 +150,7 @@ npm run preview
 ### Implemented
 
 - **Auth flow** — Sign in and Sign up with phone number + OTP (dummy `123456`); session persisted in `localStorage`; all app routes protected; unauthenticated users redirected to `/login`
-- **Header** — machimoto logo + profile avatar
+- **Header** — Client logo + profile avatar
 - **Points card** — total points, tier badge (Platinum), hero coin illustration, last-updated timestamp
 - **Quick actions** — 3 interactive tiles: Earn points · Redeem rewards · Points history
 - **Earn Points page** (`/earn-points`) — how-it-works steps and redemption flow walkthrough
@@ -181,7 +181,6 @@ Radial gradient anchored to `body::before` — bleeds to full viewport width reg
 
 All visual specifications live in [`DESIGN.md`](./DESIGN.md):
 
-- Figma source file + node IDs
 - Color, spacing, typography, and border-radius tokens
 - Component inventory with Figma node IDs
 - Layout breakpoints
@@ -195,104 +194,3 @@ All visual specifications live in [`DESIGN.md`](./DESIGN.md):
 All notable changes are documented here in reverse-chronological order.
 
 ---
-
-### [0.6.0] — 2026-04-26
-
-#### Added
-- **Auth flow** — full sign-in and sign-up with phone + OTP
-  - `SignInPage` (`/login`) — phone number input → Send OTP
-  - `SignUpPage` (`/signup`) — name + phone input → Send OTP
-  - `OtpPage` (`/otp`) — 6-digit OTP input; dummy code `123456`; masked phone display; Resend OTP
-  - `AuthContext` — `user` state, `login()`, `logout()`; persisted in `localStorage`
-- **Route protection** — `ProtectedRoute` in `App.jsx` redirects unauthenticated users to `/login`; already-logged-in users visiting `/login` or `/signup` are redirected to `/`
-- Auth pages share design tokens with the rest of the app: same card shadow (elevation-M), same blue CTA button, same Mekari Qontak footer, same Inter typography
-
-#### Changed
-- `main.jsx` wraps app with `AuthProvider`
-- `App.jsx` imports and protects all existing routes
-
----
-
-### [0.5.0] — 2026-04-26
-
-#### Added
-- **Vouchers page** (`/vouchers`) — full voucher list with Active / Expired section groups; expired rows rendered at reduced opacity
-- **VoucherDetailSheet** — bottom sheet for voucher detail: code card, expiry, status badge, cost, redeemed date; closes via backdrop tap, close button, or CTA
-  - Expired state: grey badge, dimmed code card, "Expired …" expiry label, descriptive hint copy
-- **RewardDetailSheet** — bottom sheet for reward detail with two internal states:
-  - *Detail*: thumbnail, description (left-aligned), terms list, pricing card (cost / balance / after-redeem), Redeem CTA
-  - *Success*: done icon, voucher code card, "All vouchers" + "Done" buttons
-- `closeIcon` and `doneIcon` added to `IMAGES` in `loyalty.js`
-- `status`, `cost`, `redeemedDate` fields added to each `VOUCHERS` entry
-- `description`, `terms`, `voucherCode`, `voucherExpiry` fields added to each `REDEEM_REWARDS.rewards` entry
-- Two expired vouchers added to `VOUCHERS` for realistic data coverage
-- Bottom sheet animation pattern: `requestAnimationFrame` enter + `setTimeout` exit (280 ms), scroll-lock, backdrop click-to-dismiss
-
-#### Changed
-- `VoucherItem` accepts `onClick` and `faded` props — fully clickable rows with keyboard support
-- `VoucherSection` accepts `onSelect` prop and navigates to `/vouchers` on "View all"
-- `Home` manages `selectedVoucher` state and mounts `VoucherDetailSheet`
-- `RedeemRewardsPage` manages `selected` state and mounts `RewardDetailSheet`
-- `DESIGN.md` updated with bottom sheet pattern, `VoucherDetailSheet`, `RewardDetailSheet`, `VouchersPage`, updated data shapes and IMAGES keys
-
----
-
-### [0.4.0] — 2026-04-25
-
-#### Added
-- **Points History page** (`/points-history`) — transaction log grouped by month with positive/negative points rendering
-- **Redeem Rewards page** (`/redeem-rewards`) — live search (full-pill input), category filter chips (horizontal scroll), reward grid with locked-state support
-- `searchIcon` added to `IMAGES`
-- `POINTS_HISTORY` and `REDEEM_REWARDS` data structures in `loyalty.js`
-- 12 reward items across Coffee, Matcha, Breakfast, Bento, Merch, Discount categories
-- Filter chips: All, Coffee, Matcha, Breakfast, Bento, Merch, Discount
-
----
-
-### [0.3.0] — 2026-04-25
-
-#### Added
-- **Earn Points page** (`/earn-points`) — pixel-perfect from Figma node `14-1438`
-  - `BackNav` component — chevron + Back button, bg `#f4faff`
-  - `StepList` component — numbered steps with mixed bold/regular inline text
-  - `WarningBanner` component — yellow callout with warning icon, bg `#fdf6dd`
-- Client-side routing via react-router-dom v7 (`BrowserRouter` in `main.jsx`)
-- `pages/Home/` — home screen extracted from `App.jsx` into its own page component
-- `EARN_POINTS` data structure in `src/data/loyalty.js`
-- `chevronLeft` and `warning` icon URLs added to `IMAGES`
-
-#### Changed
-- `ActionCard` now accepts `href` prop and navigates via `useNavigate`
-- `App.jsx` refactored to routing shell (`Routes` + `Route`)
-- `DESIGN.md` updated with full Earn Points page token documentation
-
----
-
-### [0.2.0] — 2026-04-25
-
-#### Added
-- Converted standalone HTML prototype to full React + Vite application
-- Component-scoped CSS co-located with each component
-- `src/data/loyalty.js` as single source of truth for all static data and image URLs
-- `DESIGN.md` documenting tokens, layout, and component inventory
-
-#### Changed
-- Desktop shell set to **684px fixed** (min-width = max-width) at ≥ 1024px
-- Tablet shell expanded to 520px at ≥ 600px
-
----
-
-### [0.1.0] — 2026-04-25
-
-#### Added
-- Pixel-perfect HTML prototype from Figma spec (`node-id: 3-346`)
-- All assets fetched as transparent PNGs at exact Figma dimensions via Figma MCP
-- Mobile-first layout — 393px baseline, centered on desktop
-- Background gradient on `body::before` for full-viewport bleed without container clipping
-- Quick action cards: Earn points · Redeem rewards · Points history
-- Arrow icon on each action card (exact 20 × 20px Figma asset)
-- Consistent two-line labels across all action cards
-- Vertical card stack on screens ≤ 360px
-- Voucher list with overflow-cropped thumbnails matching Figma positioning
-- Mekari Qontak footer logo at exact 78 × 24px
-- No drop shadow on shell — seamless integration with page background

@@ -1,17 +1,5 @@
 # Design Reference — Qontak Loyalty Portal
 
-## Figma Source
-
-| Asset | Link |
-|---|---|
-| **Main file** | [Qontak — Loyalty Portal](https://www.figma.com/design/03DgfOGS2jmnhk51R8BVMl/Qontak---Loyalty-Portal) |
-| **Home** | `node-id: 3-346` |
-| **Earn Points** | `node-id: 14-1438` |
-| **Points History** | `node-id: 14-1971` |
-| **Redeem Rewards** | `node-id: 15-2311` |
-
-> All visual decisions defer to the Figma source. When there's a conflict between this document and Figma, **Figma wins**.
-
 ---
 
 ## Design Tokens
@@ -19,7 +7,7 @@
 ### Color
 
 | Token | Value | Usage |
-|---|---|---|
+| --- | --- | --- |
 | `background-base` | `#F7F8F9` | App background |
 | `background-stage` | `#FFFFFF` | Stage card background |
 | `background-hero` | `#F4FAFF` | Page hero + BackNav band |
@@ -29,7 +17,7 @@
 | `text-default` | `#272B32` | Primary text |
 | `text-secondary` | `#656F80` | Captions, meta, footer |
 | `text-placeholder` | `#8690A2` | Search input placeholder |
-| `text-link` | `#4B61DC` | "View all" link |
+| `text-link` | `#4B61DC` | “View all” link |
 | `text-inverse` | `#FFFFFF` | Text on dark backgrounds |
 | `text-negative` | `#E5443A` | Negative point values (redemptions) |
 | `border-default` | `#DCDFE4` | Voucher card border |
@@ -44,7 +32,7 @@
 All text uses **Inter** (sans-serif). Font smoothing: `-webkit-font-smoothing: antialiased`.
 
 | Style | Weight | Size | Line Height | Letter Spacing | Usage |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | Page title (H1) | 600 | 24px | 32px | −0.2px | Page hero heading |
 | Section title (H2) | 600 | 20px | 32px | 0 | Section headings |
 | Points value | 700 | 32px | 1 | −1px | Points card large number |
@@ -58,7 +46,7 @@ All text uses **Inter** (sans-serif). Font smoothing: `-webkit-font-smoothing: a
 ### Spacing
 
 | Token | Value |
-|---|---|
+| --- | --- |
 | `space-4xs` | `2px` |
 | `space-3xs` | `4px` |
 | `space-xs` | `8px` |
@@ -71,7 +59,7 @@ All text uses **Inter** (sans-serif). Font smoothing: `-webkit-font-smoothing: a
 ### Border Radius
 
 | Token | Value | Usage |
-|---|---|---|
+| --- | --- | --- |
 | `radii-sm` | `4px` | — |
 | `radii-md` | `6px` | Voucher cards, action cards, reward thumbs, warning banner |
 | `radii-lg` | `8px` | Stage card |
@@ -81,7 +69,7 @@ All text uses **Inter** (sans-serif). Font smoothing: `-webkit-font-smoothing: a
 ### Elevation
 
 | Token | Value | Usage |
-|---|---|---|
+| --- | --- | --- |
 | `elevation-m` | `0 20px 25px rgba(0,0,0,.10), 0 10px 10px rgba(0,0,0,.04)` | Points card |
 
 ---
@@ -155,10 +143,10 @@ Single source of truth for all content and image URLs. All pages import from her
 
 ### `IMAGES`
 
-All assets are served from the Figma CDN (`https://www.figma.com/api/mcp/asset/{uuid}`). TTL: 7 days. Before production, export to `src/assets/` and update these references.
+All assets live in `src/assets/`. Before production, export and update the keys in `src/data/loyalty.js`.
 
 | Key | Usage |
-|---|---|
+| --- | --- |
 | `logo` | Header — machimoto wordmark (132×56px) |
 | `avatar` | Header — user avatar icon (36×36px) |
 | `crown` | PointsCard — tier badge icon (20×20px) |
@@ -182,7 +170,7 @@ All assets are served from the Figma CDN (`https://www.figma.com/api/mcp/asset/{
 
 ### `USER`
 
-```js
+```jsx
 { name, points, tier, lastUpdated }
 ```
 
@@ -192,7 +180,7 @@ Array of `{ id, color, icon, label: [line1, line2], href }`. Maps to ActionCard 
 
 ### `EARN_POINTS`
 
-```js
+```jsx
 {
   hero: { title, description },
   sections: [
@@ -204,7 +192,7 @@ Array of `{ id, color, icon, label: [line1, line2], href }`. Maps to ActionCard 
 
 ### `POINTS_HISTORY`
 
-```js
+```jsx
 {
   totalPoints,
   groups: [{ id, month, transactions: [{ id, title, date, location, points }] }]
@@ -215,7 +203,7 @@ Array of `{ id, color, icon, label: [line1, line2], href }`. Maps to ActionCard 
 
 ### `VOUCHERS`
 
-```js
+```jsx
 [{
   id, name, code, expiry, thumb,
   thumbStyle: { width, height, top, left },
@@ -225,11 +213,11 @@ Array of `{ id, color, icon, label: [line1, line2], href }`. Maps to ActionCard 
 }]
 ```
 
-`thumbStyle` uses absolute positioning within a 56×56px overflow-hidden container to match Figma crop precisely.
+`thumbStyle` uses absolute positioning within a 56×56px overflow-hidden container for precise image cropping.
 
 ### `REDEEM_REWARDS`
 
-```js
+```jsx
 {
   filters: ['All', 'Coffee', 'Matcha', 'Breakfast', 'Bento', 'Merch', 'Discount'],
   rewards: [{
@@ -251,7 +239,6 @@ Array of `{ id, color, icon, label: [line1, line2], href }`. Maps to ActionCard 
 
 ## Auth Pages
 
-**Figma node:** `22-4226`  
 **Files:** `src/pages/Auth/` + `src/contexts/AuthContext.jsx`
 
 All three auth pages share `auth.css` and the same layout structure:
@@ -274,22 +261,22 @@ auth-page (flex: 1, flex-direction: column, padding-top: 80px)
 
 - Phone number label + input
 - Send OTP button → navigates to `/otp` with `state: { mode: 'signin', phone }`
-- "Don't have an account? Sign up" link → `/signup`
+- “Don’t have an account? Sign up” link → `/signup`
 
 ### Sign Up (`/signup`)
 
 - Full name label + input
 - Phone number label + input
 - Send OTP button → navigates to `/otp` with `state: { mode: 'signup', phone, name }`
-- "Already have an account? Sign in" link → `/login`
+- “Already have an account? Sign in” link → `/login`
 
 ### OTP (`/otp`)
 
 - Requires `location.state.phone`; redirects to `/login` if missing
-- Hint: "We sent the code to {maskedPhone}" (format: `0812****789`)
+- Hint: “We sent the code to {maskedPhone}” (format: `0812****789`)
 - Single OTP input: `type="tel"`, `maxLength=6`, centered, `font-size: 24px`, `letter-spacing: 0.4em`
 - Verify button: checks against dummy code `123456`; on match → calls `login({ name, phone })` → navigates to `/`
-- "Didn't receive it? Resend OTP" — clears input, shows "OTP resent!" for 3 s
+- “Didn’t receive it? Resend OTP” — clears input, shows “OTP resent!” for 3 s
 
 ### Input spec (shared)
 
@@ -310,9 +297,9 @@ placeholder color: #8690a2
 
 ### `Header`
 
-**File:** `src/components/Header/Header.jsx`  
-**Props:** `userName: string`  
-**Figma node:** `3:517`
+**File:** `src/components/Header/Header.jsx`
+
+**Props:** `userName: string`
 
 Full-width bar at the top of every page. Logo on the left, circular avatar button on the right.
 
@@ -326,9 +313,9 @@ Avatar  : 36×36px circular button, background #f0f1f3
 
 ### `Footer`
 
-**File:** `src/components/Footer/Footer.jsx`  
-**Props:** none  
-**Figma node:** `12:1057`
+**File:** `src/components/Footer/Footer.jsx`
+
+**Props:** none
 
 Attribution footer used on every page. Sits at the bottom of the shell via `margin-top: auto`.
 
@@ -342,9 +329,9 @@ Logo    : mekari qontak mark — 78×24px
 
 ### `BackNav`
 
-**File:** `src/components/BackNav/BackNav.jsx`  
-**Props:** `label?: string` (default `'Back'`), `to?: string | number` (default `-1`)  
-**Figma node:** `14:1441`
+**File:** `src/components/BackNav/BackNav.jsx`
+
+**Props:** `label?: string` (default `'Back'`), `to?: string | number` (default `-1`)
 
 Navigation bar used at the top of every sub-page stage card. Shares `#f4faff` background with the hero section below it so both visually merge into one band.
 
@@ -363,9 +350,9 @@ On click, calls `navigate(to)` from `react-router-dom`.
 
 ### `WarningBanner`
 
-**File:** `src/components/WarningBanner/WarningBanner.jsx`  
-**Props:** `parts: Array<{ bold: boolean, text: string }>`  
-**Figma node:** `14:1456`
+**File:** `src/components/WarningBanner/WarningBanner.jsx`
+
+**Props:** `parts: Array<{ bold: boolean, text: string }>`
 
 Yellow callout banner for warnings. Accepts mixed bold/regular inline text via the `parts` array.
 
@@ -379,6 +366,7 @@ Bold parts  : font-weight 600
 ```
 
 Usage:
+
 ```jsx
 <WarningBanner parts={[
   { bold: true, text: 'Vouchers expire 30 days after you redeem them.' },
@@ -390,11 +378,11 @@ Usage:
 
 ### `PointsCard`
 
-**File:** `src/components/PointsCard/PointsCard.jsx`  
-**Props:** `user: { name, points, tier, lastUpdated }`  
-**Figma node:** `3:792`
+**File:** `src/components/PointsCard/PointsCard.jsx`
 
-Hero card on the Home page showing the user's total points, tier, and a decorative coins illustration.
+**Props:** `user: { name, points, tier, lastUpdated }`
+
+Hero card on the Home page showing the user’s total points, tier, and a decorative coins illustration.
 
 ```
 Section         : flex column, gap 8px, padding 0 16px 32px
@@ -417,9 +405,9 @@ Hero illustration (coins)
 
 ### `ActionCard`
 
-**File:** `src/components/ActionCard/ActionCard.jsx`  
-**Props:** `color: 'blue'|'orange'|'teal'`, `icon: string (URL)`, `label: [string, string]`, `href: string`  
-**Figma nodes:** `9:838–842`
+**File:** `src/components/ActionCard/ActionCard.jsx`
+
+**Props:** `color: 'blue'|'orange'|'teal'`, `icon: string (URL)`, `label: [string, string]`, `href: string`
 
 Tappable quick-action tile. Three instances live inside `QuickActions`.
 
@@ -442,9 +430,9 @@ Breakpoint ≤360px : cards stack vertically (flex-direction column in parent)
 
 ### `QuickActions`
 
-**File:** `src/components/QuickActions/QuickActions.jsx`  
-**Props:** `actions: QUICK_ACTIONS[]`  
-**Figma node:** `9:836`
+**File:** `src/components/QuickActions/QuickActions.jsx`
+
+**Props:** `actions: QUICK_ACTIONS[]`
 
 Section wrapper for the three `ActionCard` tiles.
 
@@ -494,9 +482,9 @@ transition: transform 0.28s ease;
 
 ### `VoucherDetailSheet`
 
-**File:** `src/components/VoucherDetailSheet/VoucherDetailSheet.jsx`  
-**Props:** `voucher: VOUCHERS[n]`, `onClose: () => void`  
-**Figma node:** `17-2883`
+**File:** `src/components/VoucherDetailSheet/VoucherDetailSheet.jsx`
+
+**Props:** `voucher: VOUCHERS[n]`, `onClose: () => void`
 
 Bottom sheet opened when a user taps a voucher row on the Home page.
 
@@ -533,11 +521,11 @@ Close button   : full-width pill, background white, border 1px solid #dcdfe4
 
 ### `VoucherItem`
 
-**File:** `src/components/VoucherItem/VoucherItem.jsx`  
-**Props:** `name`, `code`, `expiry`, `thumb`, `thumbStyle: { width, height, top, left }`, `onClick?: () => void`  
-**Figma nodes:** `12:895`, `12:973`
+**File:** `src/components/VoucherItem/VoucherItem.jsx`
 
-Single voucher row. Thumbnail uses absolute positioning to implement Figma's precise crop (the image overflows the container; the container clips it).
+**Props:** `name`, `code`, `expiry`, `thumb`, `thumbStyle: { width, height, top, left }`, `onClick?: () => void`
+
+Single voucher row. Thumbnail uses absolute positioning to crop the thumbnail image precisely (the image overflows the container; the container clips it).
 
 ```
 Layout       : flex row, align-items center, gap 12px, padding 12px
@@ -556,11 +544,11 @@ Dot separator: 2×2px circle, #656f80
 
 ### `VoucherSection`
 
-**File:** `src/components/VoucherSection/VoucherSection.jsx`  
-**Props:** `vouchers: VOUCHERS[]`, `onSelect?: (voucher) => void`  
-**Figma node:** `12:892`
+**File:** `src/components/VoucherSection/VoucherSection.jsx`
 
-Section wrapper for the voucher list. Renders a header row with a "View all" link.
+**Props:** `vouchers: VOUCHERS[]`, `onSelect?: (voucher) => void`
+
+Section wrapper for the voucher list. Renders a header row with a “View all” link.
 
 ```
 Layout         : flex column, gap 8px, padding 8px 16px 32px
@@ -573,13 +561,13 @@ List           : flex column, gap 8px
 
 ### `RewardDetailSheet`
 
-**File:** `src/components/RewardDetailSheet/RewardDetailSheet.jsx`  
-**Props:** `reward: REDEEM_REWARDS.rewards[n]`, `onClose: () => void`  
-**Figma nodes:** `17-2807` (detail), `17-2837` (success)
+**File:** `src/components/RewardDetailSheet/RewardDetailSheet.jsx`
+
+**Props:** `reward: REDEEM_REWARDS.rewards[n]`, `onClose: () => void`
 
 Bottom sheet opened when a user taps a reward row on the Redeem Rewards page. Has two internal states toggled by `redeemed: boolean`.
 
-#### Detail state (`redeemed = false`)
+### Detail state (`redeemed = false`)
 
 ```
 Header         : flex, space-between
@@ -611,7 +599,7 @@ Redeem CTA     : full-width pill, background #4b61dc, white text
 
 Points math: `parsePts(str)` strips non-digits; `formatPts(n)` formats with dot thousands separator (`1205 → "1.205pts"`).
 
-#### Success state (`redeemed = true`)
+### Success state (`redeemed = true`)
 
 ```
 Header         : flex, justify-content flex-end
@@ -639,9 +627,9 @@ Button group   : flex, gap 16px
 
 ### `StepList`
 
-**File:** `src/components/StepList/StepList.jsx`  
-**Props:** `title: string`, `steps: Array<{ id, parts: [{ bold, text }] }>`  
-**Figma node:** `14:1447`
+**File:** `src/components/StepList/StepList.jsx`
+
+**Props:** `title: string`, `steps: Array<{ id, parts: [{ bold, text }] }>`
 
 Numbered step list used on the Earn Points page. The `parts` array enables mixed bold/regular inline text within a single step.
 
@@ -765,7 +753,7 @@ Tapping a reward row sets `selected` state; `RewardDetailSheet` handles both the
 
 **File:** `src/pages/Vouchers/VouchersPage.jsx`
 
-Uses the **stage card pattern**. Accessible via "View all" on Home.
+Uses the **stage card pattern**. Accessible via “View all” on Home.
 
 ```
 Header
@@ -787,7 +775,7 @@ Items are split by `voucher.status === 'Expired'`. Expired items render with the
 
 ---
 
-#### Search Bar
+### Search Bar
 
 ```
 Layout      : flex, align-items center, gap 8px, padding 8px 12px
@@ -805,7 +793,7 @@ Placeholder : color #8690a2
 
 Filtering: live, case-insensitive, matches reward `name`. Combines with the active category filter.
 
-#### Filter Chips
+### Filter Chips
 
 ```
 Row         : flex, gap 8px, overflow-x auto, scrollbar hidden
@@ -818,7 +806,7 @@ Inactive    : background #f0f1f3, color #272b32
 
 Filters: All, Coffee, Matcha, Breakfast, Bento, Merch, Discount.
 
-#### Reward Row
+### Reward Row
 
 ```
 Layout      : flex, align-items flex-start, gap 12px, padding 12px 0
@@ -827,7 +815,7 @@ Overflow    : hidden
 
 Thumbnail   : 40×40px, border-radius 6px, overflow hidden
   object-cover   → img fills container with object-fit cover
-  thumbStyle set → img uses absolute positioning for precise Figma crop
+  thumbStyle set → img uses absolute positioning for precise crop
 
 Name        : 14px / 600 / 20px
   Unlocked  : color #272b32
@@ -850,11 +838,6 @@ Points      : 14px / 600 / 20px, white-space nowrap, flex-shrink 0
 
 ## Asset Notes
 
-Image assets are currently served from the Figma CDN (temporary URLs, **7-day TTL**). Before production:
+Image assets live in `src/assets/`. Update the keys in `src/data/loyalty.js` `IMAGES` object to point to local paths.
 
-1. Export all assets from Figma as optimised PNG or SVG
-2. Add them to `src/assets/`
-3. Update keys in `src/data/loyalty.js` `IMAGES` object
-4. Remove Figma CDN URLs entirely
-
-Icon paths (chevron, warning, search, avatar) are vector paths exported as small PNGs. They use an inner `position: absolute` span with `inset` percentages to correctly position the path within its 20×20px overflow-hidden container, exactly matching the Figma bounding box.
+Icon paths (chevron, warning, search, avatar) are vector paths exported as small PNGs. They use an inner `position: absolute` span with `inset` percentages to correctly position the path within its 20×20px overflow-hidden container.
