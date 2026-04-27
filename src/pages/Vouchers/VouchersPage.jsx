@@ -42,7 +42,10 @@ export default function VouchersPage() {
       <Header />
       <div className="vp-container">
         <div className="vp-stage">
-          <BackNav label="Your vouchers" to="/" />
+          <BackNav label="Back" to="/" />
+          <div className="vp-hero">
+            <p className="vp-hero__title">Your vouchers</p>
+          </div>
           <div className="vp-content">
             {renderGroup('Active', active)}
             {renderGroup('Used', used, true)}
