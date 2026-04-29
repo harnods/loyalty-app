@@ -4,7 +4,8 @@ import BackNav from '../../components/BackNav/BackNav'
 import Footer from '../../components/Footer/Footer'
 import VoucherItem from '../../components/VoucherItem/VoucherItem'
 import VoucherDetailSheet from '../../components/VoucherDetailSheet/VoucherDetailSheet'
-import { IMAGES, VOUCHERS } from '../../data/loyalty'
+import { IMAGES } from '../../data/loyalty'
+import { useBrand } from '../../contexts/BrandContext'
 import './VouchersPage.css'
 
 function AccordionGroup({ label, items, onSelect }) {
@@ -46,11 +47,12 @@ function AccordionGroup({ label, items, onSelect }) {
 }
 
 export default function VouchersPage() {
+  const { brand } = useBrand()
   const [selectedVoucher, setSelectedVoucher] = useState(null)
 
-  const active  = VOUCHERS.filter((v) => v.status === 'Active')
-  const used    = VOUCHERS.filter((v) => v.status === 'Used')
-  const expired = VOUCHERS.filter((v) => v.status === 'Expired')
+  const active  = brand.vouchers.filter((v) => v.status === 'Active')
+  const used    = brand.vouchers.filter((v) => v.status === 'Used')
+  const expired = brand.vouchers.filter((v) => v.status === 'Expired')
 
   return (
     <>

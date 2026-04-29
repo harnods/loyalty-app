@@ -3,7 +3,8 @@ import Header from '../../components/Header/Header'
 import BackNav from '../../components/BackNav/BackNav'
 import Footer from '../../components/Footer/Footer'
 import RewardDetailSheet from '../../components/RewardDetailSheet/RewardDetailSheet'
-import { USER, IMAGES, REDEEM_REWARDS } from '../../data/loyalty'
+import { useBrand } from '../../contexts/BrandContext'
+import { IMAGES } from '../../data/loyalty'
 import './RedeemRewardsPage.css'
 
 function RewardThumb({ reward }) {
@@ -63,26 +64,32 @@ function RewardRow({ reward, isLast, onSelect }) {
 }
 
 export default function RedeemRewardsPage() {
+  const { brand } = useBrand()
+  const { redeemRewards, points } = brand
+
   const [activeFilter, setActiveFilter] = useState('All')
   const [query, setQuery] = useState('')
   const [selected, setSelected] = useState(null)
 
-  const filtered = REDEEM_REWARDS.rewards.filter((r) => {
-    const matchesFilter = activeFilter === 'All' || r.category === activeFilter
+  // Reset filter when brand changes if filter no longer exists
+  const validFilter = redeemRewards.filters.includes(activeFilter) ? activeFilter : 'All'
+
+  const filtered = redeemRewards.rewards.filter((r) => {
+    const matchesFilter = validFilter === 'All' || r.category === validFilter
     const matchesQuery = r.name.toLowerCase().includes(query.toLowerCase())
     return matchesFilter && matchesQuery
   })
 
   return (
     <div className="rr">
-      <Header userName={USER.name} />
+      <Header />
 
       <div className="rr__container">
         <div className="rr__stage">
           <BackNav />
           <div className="rr__hero">
             <h1 className="rr__hero-title">Redeem rewards</h1>
-            <p className="rr__hero-desc">Total points: {USER.points} pts</p>
+            <p className="rr__hero-desc">Total points: {points}</p>
           </div>
 
           <div className="rr__content">
@@ -102,10 +109,10 @@ export default function RedeemRewardsPage() {
                 />
               </div>
               <div className="rr__chips">
-                {REDEEM_REWARDS.filters.map((f) => (
+                {redeemRewards.filters.map((f) => (
                   <button
                     key={f}
-                    className={`rr-chip${activeFilter === f ? ' rr-chip--active' : ''}`}
+                    className={`rr-chip${validFilter === f ? ' rr-chip--active' : ''}`}
                     onClick={() => setActiveFilter(f)}
                   >
                     {f}

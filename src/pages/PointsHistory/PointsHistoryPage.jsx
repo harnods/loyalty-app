@@ -1,7 +1,7 @@
 import Header from '../../components/Header/Header'
 import BackNav from '../../components/BackNav/BackNav'
 import Footer from '../../components/Footer/Footer'
-import { USER, POINTS_HISTORY } from '../../data/loyalty'
+import { useBrand } from '../../contexts/BrandContext'
 import './PointsHistoryPage.css'
 
 function TransactionRow({ tx, isLast }) {
@@ -37,9 +37,12 @@ function TransactionGroup({ group }) {
 }
 
 export default function PointsHistoryPage() {
+  const { brand } = useBrand()
+  const { pointsHistory } = brand
+
   return (
     <div className="ph">
-      <Header userName={USER.name} />
+      <Header />
 
       <div className="ph__container">
         <div className="ph__stage">
@@ -47,11 +50,11 @@ export default function PointsHistoryPage() {
 
           <div className="ph__hero">
             <h1 className="ph__hero-title">Points history</h1>
-            <p className="ph__hero-desc">Total points: {POINTS_HISTORY.totalPoints}</p>
+            <p className="ph__hero-desc">Total points: {pointsHistory.totalPoints}</p>
           </div>
 
           <div className="ph__content">
-            {POINTS_HISTORY.groups.map((group) => (
+            {pointsHistory.groups.map((group) => (
               <TransactionGroup key={group.id} group={group} />
             ))}
           </div>

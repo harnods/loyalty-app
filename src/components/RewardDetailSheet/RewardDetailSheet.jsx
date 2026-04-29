@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { IMAGES, USER } from '../../data/loyalty'
+import { useBrand } from '../../contexts/BrandContext'
+import { IMAGES } from '../../data/loyalty'
 import './RewardDetailSheet.css'
 
 function parsePts(str) {
@@ -39,7 +40,8 @@ function RewardThumb({ reward }) {
 }
 
 function DetailView({ reward, onRedeem, onClose }) {
-  const userPts = parsePts(USER.points)
+  const { brand } = useBrand()
+  const userPts = parsePts(brand.points)
   const cost = parsePts(reward.points)
   const afterPts = userPts - cost
 

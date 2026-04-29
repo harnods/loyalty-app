@@ -23,10 +23,9 @@ export const IMAGES = {
   doneIcon:       `${BASE}/0173bd47-7137-4b66-a0eb-488523306669`,
 };
 
+// Legacy — kept for AccountPage profile fields
 export const USER = {
   name: 'Dona',
-  points: '1,250',
-  tier: 'Platinum',
   memberId: 'MC-10090',
   memberSince: '12 Jan 2026',
 };
@@ -70,94 +69,75 @@ export const EARN_POINTS = {
   ],
 };
 
-export const POINTS_HISTORY = {
+// ─── Machimoto Cafe ──────────────────────────────────────────────────────────
+
+const MACHIMOTO_VOUCHERS = [
+  {
+    id: 'vc1', name: 'Free drip bag coffee', code: 'VC08282147Q',
+    expiry: 'Exp. 15 May 2026',
+    thumb: `${BASE}/f04d9a9e-98ea-451e-890b-ffef2036fcca`,
+    thumbStyle: { width: '100%', height: '133.51%', top: '-30.59%', left: '0' },
+    status: 'Active', cost: '45pts', redeemedDate: '19 Apr 2026, 17:45',
+  },
+  {
+    id: 'vc2', name: 'Enjoy barista choice coffee', code: 'UPG-OAT-003',
+    expiry: 'Exp. 15 Jun 2026',
+    thumb: `${BASE}/76f20b23-85e7-44f4-b2af-6aadc6556760`,
+    thumbStyle: { width: '118.31%', height: '157.14%', top: '-38.39%', left: '-0.23%' },
+    status: 'Active', cost: '80pts', redeemedDate: '22 Apr 2026, 10:30',
+  },
+  {
+    id: 'vc3', name: 'Signature tote bag', code: 'TOTE2026A01',
+    expiry: 'Exp. 30 Apr 2026',
+    thumb: `${BASE}/6d046049-b9aa-4d50-a5e6-a4fd3abcc2f5`,
+    thumbStyle: null,
+    status: 'Used', cost: '1.200pts', redeemedDate: '10 Apr 2026, 11:00', usedDate: '12 Apr 2026, 14:30',
+  },
+  {
+    id: 'vc4', name: 'Free drip bag coffee', code: 'VC00123TEST',
+    expiry: 'Exp. 10 Apr 2026',
+    thumb: `${BASE}/f04d9a9e-98ea-451e-890b-ffef2036fcca`,
+    thumbStyle: { width: '100%', height: '133.51%', top: '-30.59%', left: '0' },
+    status: 'Used', cost: '45pts', redeemedDate: '15 Mar 2026, 09:00', usedDate: '18 Mar 2026, 10:15',
+  },
+  {
+    id: 'vc5', name: 'Free onigiri of the day', code: 'ONG2025003X',
+    expiry: 'Exp. 19 Mar 2026',
+    thumb: `${BASE}/46823361-ec71-4aba-a4d3-8fc0a05ff901`,
+    thumbStyle: { width: '99.92%', height: '110%', top: '-5%', left: '0.04%' },
+    status: 'Expired', cost: '45pts', redeemedDate: '17 Feb 2026, 09:12',
+  },
+  {
+    id: 'vc6', name: '20% off next purchase', code: 'DSC20NEXT01',
+    expiry: 'Exp. 2 Mar 2026',
+    thumb: `${BASE}/33337a4d-94bf-4f89-a858-7d33823e4865`,
+    thumbStyle: null,
+    status: 'Expired', cost: '200pts', redeemedDate: '16 Feb 2026, 14:30',
+  },
+];
+
+// Keep legacy export for any leftover references
+export const VOUCHERS = MACHIMOTO_VOUCHERS;
+
+const MACHIMOTO_HISTORY = {
   totalPoints: '1,250 pts',
   groups: [
     {
       id: 'apr-2026',
       month: 'April 2026',
       transactions: [
-        { id: 1, title: 'In-store purchase',            date: '24 Apr, 14:22', location: 'Kemang Square', points: '+85'    },
-        { id: 2, title: 'Online order #A-44921',         date: '22 Apr, 10:30', location: 'Website',       points: '+120'   },
-        { id: 3, title: 'Redeemed: Free drip bag coffee',date: '19 Apr, 17:45', location: null,            points: '-45'    },
-        { id: 4, title: 'Welcome bonus',                 date: '19 Apr, 17:30', location: null,            points: '+1,000' },
+        { id: 1, title: 'In-store purchase',             date: '24 Apr, 14:22', location: 'Kemang Square', points: '+85'    },
+        { id: 2, title: 'Online order #A-44921',          date: '22 Apr, 10:30', location: 'Website',       points: '+120'   },
+        { id: 3, title: 'Redeemed: Free drip bag coffee', date: '19 Apr, 17:45', location: null,            points: '-45'    },
+        { id: 4, title: 'Welcome bonus',                  date: '19 Apr, 17:30', location: null,            points: '+1,000' },
       ],
     },
   ],
 };
 
-export const VOUCHERS = [
-  {
-    id: 'vc1',
-    name: 'Free drip bag coffee',
-    code: 'VC08282147Q',
-    expiry: 'Exp. 15 May 2026',
-    thumb: `${BASE}/f04d9a9e-98ea-451e-890b-ffef2036fcca`,
-    thumbStyle: { width: '100%', height: '133.51%', top: '-30.59%', left: '0' },
-    status: 'Active',
-    cost: '45pts',
-    redeemedDate: '19 Apr 2026, 17:45',
-  },
-  {
-    id: 'vc2',
-    name: 'Enjoy barista choice coffee',
-    code: 'UPG-OAT-003',
-    expiry: 'Exp. 15 Jun 2026',
-    thumb: `${BASE}/76f20b23-85e7-44f4-b2af-6aadc6556760`,
-    thumbStyle: { width: '118.31%', height: '157.14%', top: '-38.39%', left: '-0.23%' },
-    status: 'Active',
-    cost: '80pts',
-    redeemedDate: '22 Apr 2026, 10:30',
-  },
-  {
-    id: 'vc3',
-    name: 'Signature tote bag',
-    code: 'TOTE2026A01',
-    expiry: 'Exp. 30 Apr 2026',
-    thumb: `${BASE}/6d046049-b9aa-4d50-a5e6-a4fd3abcc2f5`,
-    thumbStyle: null,
-    status: 'Used',
-    cost: '1.200pts',
-    redeemedDate: '10 Apr 2026, 11:00',
-    usedDate: '12 Apr 2026, 14:30',
-  },
-  {
-    id: 'vc4',
-    name: 'Free drip bag coffee',
-    code: 'VC00123TEST',
-    expiry: 'Exp. 10 Apr 2026',
-    thumb: `${BASE}/f04d9a9e-98ea-451e-890b-ffef2036fcca`,
-    thumbStyle: { width: '100%', height: '133.51%', top: '-30.59%', left: '0' },
-    status: 'Used',
-    cost: '45pts',
-    redeemedDate: '15 Mar 2026, 09:00',
-    usedDate: '18 Mar 2026, 10:15',
-  },
-  {
-    id: 'vc5',
-    name: 'Free onigiri of the day',
-    code: 'ONG2025003X',
-    expiry: 'Exp. 19 Mar 2026',
-    thumb: `${BASE}/46823361-ec71-4aba-a4d3-8fc0a05ff901`,
-    thumbStyle: { width: '99.92%', height: '110%', top: '-5%', left: '0.04%' },
-    status: 'Expired',
-    cost: '45pts',
-    redeemedDate: '17 Feb 2026, 09:12',
-  },
-  {
-    id: 'vc6',
-    name: '20% off next purchase',
-    code: 'DSC20NEXT01',
-    expiry: 'Exp. 2 Mar 2026',
-    thumb: `${BASE}/33337a4d-94bf-4f89-a858-7d33823e4865`,
-    thumbStyle: null,
-    status: 'Expired',
-    cost: '200pts',
-    redeemedDate: '16 Feb 2026, 14:30',
-  },
-];
+export const POINTS_HISTORY = MACHIMOTO_HISTORY;
 
-export const REDEEM_REWARDS = {
+const MACHIMOTO_REWARDS = {
   filters: ['All', 'Coffee', 'Matcha', 'Breakfast', 'Bento', 'Merch', 'Discount'],
   rewards: [
     {
@@ -246,3 +226,191 @@ export const REDEEM_REWARDS = {
     },
   ],
 };
+
+export const REDEEM_REWARDS = MACHIMOTO_REWARDS;
+
+// ─── Tomodachi Cafe ──────────────────────────────────────────────────────────
+
+const TOMODACHI_VOUCHERS = [
+  {
+    id: 'tv1', name: 'Free matcha latte', code: 'TCM-FREE-001',
+    expiry: 'Exp. 20 May 2026',
+    thumb: `${BASE}/3fd97d2b-b766-4077-b1ed-658de263a536`,
+    thumbStyle: null,
+    status: 'Active', cost: '60exp', redeemedDate: '20 Apr 2026, 10:00',
+  },
+  {
+    id: 'tv2', name: 'Buy 1 get 1 coffee', code: 'TCB1G1-002',
+    expiry: 'Exp. 5 Apr 2026',
+    thumb: `${BASE}/6581378c-d56a-4928-b699-93c325aff99a`,
+    thumbStyle: { width: '100%', height: '133.51%', top: '-30.59%', left: '0' },
+    status: 'Used', cost: '120exp', redeemedDate: '1 Apr 2026, 09:00', usedDate: '3 Apr 2026, 11:20',
+  },
+  {
+    id: 'tv3', name: 'Free cold brew', code: 'TCB-COLD-003',
+    expiry: 'Exp. 15 Mar 2026',
+    thumb: `${BASE}/6581378c-d56a-4928-b699-93c325aff99a`,
+    thumbStyle: { width: '100%', height: '133.51%', top: '-30.59%', left: '0' },
+    status: 'Expired', cost: '60exp', redeemedDate: '13 Feb 2026, 14:00',
+  },
+];
+
+const TOMODACHI_HISTORY = {
+  totalPoints: '3,250 exp',
+  groups: [
+    {
+      id: 'apr-2026',
+      month: 'April 2026',
+      transactions: [
+        { id: 1, title: 'In-store visit',               date: '21 Apr, 12:10', location: 'Sudirman Branch', points: '+200' },
+        { id: 2, title: 'Redeemed: Buy 1 get 1 coffee', date: '1 Apr, 09:00',  location: null,              points: '-120' },
+        { id: 3, title: 'Weekend bonus',                 date: '1 Apr, 08:00',  location: null,              points: '+500' },
+      ],
+    },
+    {
+      id: 'mar-2026',
+      month: 'March 2026',
+      transactions: [
+        { id: 4, title: 'In-store visit',  date: '15 Mar, 10:30', location: 'Senayan City', points: '+180' },
+        { id: 5, title: 'Welcome bonus',   date: '5 Mar, 09:00',  location: null,            points: '+2,490' },
+      ],
+    },
+  ],
+};
+
+const TOMODACHI_REWARDS = {
+  filters: ['All', 'Coffee', 'Matcha', 'Snacks'],
+  rewards: [
+    {
+      id: 'tr1', name: 'Free matcha latte', category: 'Matcha', points: '60exp', locked: false,
+      thumbKey: 'rewardPourOver', thumbStyle: null,
+      description: 'A silky ceremonial-grade matcha latte, hot or iced.',
+      terms: ['Valid for 30 days.', 'One per visit.', 'Not combined with other offers.'],
+      voucherCode: 'TCM-FREE-001', voucherExpiry: 'Expires 20 May 2026',
+    },
+    {
+      id: 'tr2', name: 'Buy 1 get 1 coffee', category: 'Coffee', points: '120exp', locked: false,
+      thumbKey: 'rewardDripBag', thumbStyle: { width: '100%', height: '133.51%', top: '-30.59%', left: '0' },
+      description: 'Buy any coffee, get a second one of equal or lesser value free.',
+      terms: ['Valid for 30 days.', 'One redemption per visit.', 'Both drinks must be ordered together.'],
+      voucherCode: 'TCB1G1-NEW', voucherExpiry: 'Expires 25 May 2026',
+    },
+    {
+      id: 'tr3', name: 'Tomodachi tote bag', category: 'Merch', points: '900exp', locked: false,
+      thumbKey: 'rewardToteBag', thumbStyle: null,
+      description: 'Exclusive Tomodachi canvas tote with embroidered logo.',
+      terms: ['While stocks last.', 'One per member.', 'In-store pickup only.'],
+      voucherCode: 'TC-TOTE-003', voucherExpiry: 'Expires 30 Jun 2026',
+    },
+    {
+      id: 'tr4', name: 'Cheese croissant', category: 'Snacks', points: '80exp', locked: false,
+      thumbKey: 'rewardBento', thumbStyle: null,
+      description: 'Freshly baked cheese croissant from our morning batch.',
+      terms: ['Valid for 14 days.', 'Available while stocks last.', 'Dine-in or takeaway.'],
+      voucherCode: 'TC-CRS-004', voucherExpiry: 'Expires 15 May 2026',
+    },
+  ],
+};
+
+// ─── Daitomo Ramen ───────────────────────────────────────────────────────────
+
+const DAITOMO_VOUCHERS = [
+  {
+    id: 'dv1', name: 'Free ramen upgrade', code: 'DTR-UPG-001',
+    expiry: 'Exp. 30 May 2026',
+    thumb: `${BASE}/3f01bddc-ca49-4140-9577-68eed5c7156e`,
+    thumbStyle: null,
+    status: 'Active', cost: 'Rp20.000', redeemedDate: '25 Apr 2026, 18:30',
+  },
+  {
+    id: 'dv2', name: 'Chicken katsu side', code: 'DTR-KTS-002',
+    expiry: 'Exp. 18 Apr 2026',
+    thumb: `${BASE}/3f01bddc-ca49-4140-9577-68eed5c7156e`,
+    thumbStyle: null,
+    status: 'Used', cost: 'Rp15.000', redeemedDate: '10 Apr 2026, 19:00', usedDate: '15 Apr 2026, 18:45',
+  },
+];
+
+const DAITOMO_HISTORY = {
+  totalPoints: 'Rp50.000',
+  groups: [
+    {
+      id: 'apr-2026',
+      month: 'April 2026',
+      transactions: [
+        { id: 1, title: 'Dine-in order',              date: '25 Apr, 18:30', location: 'Kelapa Gading', points: '+Rp15.000' },
+        { id: 2, title: 'Redeemed: Chicken katsu',    date: '10 Apr, 19:00', location: null,             points: '-Rp15.000' },
+        { id: 3, title: 'Dine-in order',              date: '8 Apr, 12:45',  location: 'SCBD',           points: '+Rp20.000' },
+        { id: 4, title: 'Welcome cashback',           date: '20 Apr, 09:00', location: null,             points: '+Rp30.000' },
+      ],
+    },
+  ],
+};
+
+const DAITOMO_REWARDS = {
+  filters: ['All', 'Ramen', 'Sides', 'Drinks'],
+  rewards: [
+    {
+      id: 'dr1', name: 'Free ramen upgrade', category: 'Ramen', points: 'Rp20.000', locked: false,
+      thumbKey: 'rewardBento', thumbStyle: null,
+      description: 'Upgrade your ramen to large size or add an extra topping of your choice.',
+      terms: ['Valid for 30 days.', 'One per visit.', 'Subject to availability.'],
+      voucherCode: 'DTR-UPG-001', voucherExpiry: 'Expires 30 May 2026',
+    },
+    {
+      id: 'dr2', name: 'Chicken katsu side', category: 'Sides', points: 'Rp15.000', locked: false,
+      thumbKey: 'rewardBento', thumbStyle: null,
+      description: 'A crispy golden chicken katsu as your side dish.',
+      terms: ['Valid for 30 days.', 'One per order.'],
+      voucherCode: 'DTR-KTS-NEW', voucherExpiry: 'Expires 25 May 2026',
+    },
+    {
+      id: 'dr3', name: 'Free soft drink', category: 'Drinks', points: 'Rp10.000', locked: false,
+      thumbKey: 'rewardDripBag', thumbStyle: { width: '100%', height: '133.51%', top: '-30.59%', left: '0' },
+      description: 'Any canned soft drink or house-made iced tea.',
+      terms: ['Valid for 14 days.', 'One per order.'],
+      voucherCode: 'DTR-DRK-003', voucherExpiry: 'Expires 15 May 2026',
+    },
+  ],
+};
+
+// ─── Brands ──────────────────────────────────────────────────────────────────
+
+export const BRANDS = [
+  {
+    id: 'machimoto',
+    name: 'Machimoto Cafe',
+    points: '1,250 pts',
+    tier: 'Platinum',
+    memberId: 'MC-10090',
+    memberSince: '12 Jan 2026',
+    nextTierHint: 'Earn 600 more pts to reach Diamond',
+    vouchers: MACHIMOTO_VOUCHERS,
+    pointsHistory: MACHIMOTO_HISTORY,
+    redeemRewards: MACHIMOTO_REWARDS,
+  },
+  {
+    id: 'tomodachi',
+    name: 'Tomodachi Cafe',
+    points: '3,250 exp',
+    tier: 'Level 2',
+    memberId: 'TC-20455',
+    memberSince: '5 Mar 2026',
+    nextTierHint: 'Earn 750 more exp to reach Level 3',
+    vouchers: TOMODACHI_VOUCHERS,
+    pointsHistory: TOMODACHI_HISTORY,
+    redeemRewards: TOMODACHI_REWARDS,
+  },
+  {
+    id: 'daitomo',
+    name: 'Daitomo Ramen',
+    points: 'Rp50.000',
+    tier: 'Basic',
+    memberId: 'DR-30821',
+    memberSince: '20 Apr 2026',
+    nextTierHint: 'Earn Rp100.000 more to reach Silver',
+    vouchers: DAITOMO_VOUCHERS,
+    pointsHistory: DAITOMO_HISTORY,
+    redeemRewards: DAITOMO_REWARDS,
+  },
+];

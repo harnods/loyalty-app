@@ -5,11 +5,13 @@ import Header from '../../components/Header/Header'
 import BackNav from '../../components/BackNav/BackNav'
 import Footer from '../../components/Footer/Footer'
 import PinSheet from '../../components/PinSheet/PinSheet'
-import { USER, IMAGES } from '../../data/loyalty'
+import { IMAGES } from '../../data/loyalty'
+import { useBrand } from '../../contexts/BrandContext'
 import './AccountPage.css'
 
 export default function AccountPage() {
   const { user, logout, savePin } = useAuth()
+  const { brand } = useBrand()
   const navigate = useNavigate()
   const [pinSheetMode, setPinSheetMode] = useState(null) // null | 'create' | 'change'
 
@@ -45,7 +47,7 @@ export default function AccountPage() {
               </div>
               <div className="ac-item">
                 <p className="ac-item__label">Member ID</p>
-                <p className="ac-item__value">{USER.memberId}</p>
+                <p className="ac-item__value">{brand.memberId}</p>
               </div>
               <div className="ac-item">
                 <p className="ac-item__label">Phone number</p>
@@ -53,7 +55,7 @@ export default function AccountPage() {
               </div>
               <div className="ac-item">
                 <p className="ac-item__label">Member since</p>
-                <p className="ac-item__value">{USER.memberSince}</p>
+                <p className="ac-item__value">{brand.memberSince}</p>
               </div>
             </div>
 

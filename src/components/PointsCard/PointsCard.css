@@ -6,13 +6,68 @@
   flex-shrink: 0;
 }
 
+/* ── Header: welcome + brand selector ─────────────────────────────────────── */
+.points-section__header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .points-section__welcome {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #272b32;
+}
+
+.points-section__brand-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.points-section__brand-name {
+  font-family: 'Inter', sans-serif;
   font-size: 20px;
   font-weight: 600;
   line-height: 32px;
   color: #272b32;
+  letter-spacing: 0;
 }
 
+/* Caret — chevronLeft rotated -90° (pointing down) */
+.points-section__caret {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  overflow: hidden;
+  transform: rotate(-90deg);
+}
+
+.points-section__caret-path {
+  position: absolute;
+  top: 26.25%;
+  right: 36.25%;
+  bottom: 26.25%;
+  left: 36.25%;
+}
+
+.points-section__caret-path img {
+  position: absolute;
+  display: block;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+/* ── Card ─────────────────────────────────────────────────────────────────── */
 .points-card {
   background: #fff;
   border-radius: 12px;
@@ -20,46 +75,7 @@
   padding: 20px;
   position: relative;
   width: 100%;
-}
-
-.points-card--multi {
-  padding: 0;
   overflow: hidden;
-}
-
-.points-card__merchant {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 12px;
-}
-
-.points-card__merchant--divider {
-  border-bottom: 1px solid #f0f1f3;
-}
-
-.points-card__merchant-label {
-  display: flex;
-  flex-direction: column;
-}
-
-.points-card__merchant-title {
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 24px;
-  color: #272b32;
-  white-space: nowrap;
-}
-
-.points-card__merchant-value {
-  font-family: 'Inter', sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 32px;
-  letter-spacing: -1px;
-  color: #272b32;
-  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .points-card__col {
@@ -68,14 +84,22 @@
   gap: 12px;
 }
 
+.points-card__label-block {
+  display: flex;
+  flex-direction: column;
+}
+
 .points-card__label {
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
   color: #272b32;
+  white-space: nowrap;
 }
 
 .points-card__value {
+  font-family: 'Inter', sans-serif;
   font-size: 32px;
   font-weight: 700;
   line-height: 1;
@@ -84,30 +108,38 @@
   font-variant-numeric: lining-nums tabular-nums;
 }
 
+/* Tier + hint */
+.points-card__tier-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .points-card__tier {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.points-card__tier img {
-  display: block;
-}
+.points-card__tier img { display: block; }
 
 .points-card__tier span {
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
   color: #000;
 }
 
-.points-card__updated {
-  font-size: 14px;
+.points-card__hint {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
   font-weight: 400;
-  line-height: 20px;
-  color: #000;
+  line-height: 16px;
+  color: #656f80;
 }
 
+/* Hero illustration */
 .points-card__hero {
   position: absolute;
   top: -8px;

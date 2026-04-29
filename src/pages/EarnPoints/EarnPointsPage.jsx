@@ -2,7 +2,7 @@ import Header from '../../components/Header/Header'
 import BackNav from '../../components/BackNav/BackNav'
 import WarningBanner from '../../components/WarningBanner/WarningBanner'
 import Footer from '../../components/Footer/Footer'
-import { USER, EARN_POINTS } from '../../data/loyalty'
+import { EARN_POINTS } from '../../data/loyalty'
 import './EarnPointsPage.css'
 
 function StepItem({ step }) {
@@ -23,7 +23,7 @@ function StepItem({ step }) {
 export default function EarnPointsPage() {
   return (
     <div className="ep">
-      <Header userName={USER.name} />
+      <Header />
 
       <div className="ep__container">
         <div className="ep__stage">

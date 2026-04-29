@@ -1,62 +1,60 @@
+import { useState } from 'react'
+import { useAuth } from '../../contexts/AuthContext'
+import { useBrand } from '../../contexts/BrandContext'
+import BrandPicker from '../BrandPicker/BrandPicker'
 import { IMAGES } from '../../data/loyalty'
 import './PointsCard.css'
 
-export default function PointsCard({ user }) {
-  const isSpecialPhone = user?.phone === '087880851479'
-
-  if (isSpecialPhone) {
-    const items = [
-      { id: 'machimoto', title: 'Machimoto Cafe', value: '1,250 pts', tier: 'Gold' },
-      { id: 'tomodachi', title: 'Tomodachi Cafe', value: '3,250 exp', tier: 'Level 2' },
-      { id: 'daitomo', title: 'Daitomo Ramen', value: 'Rp50.000', tier: 'Basic' },
-    ]
-
-    return (
-      <section className="points-section">
-        <div className="points-card points-card--multi">
-          {items.map((item, index) => (
-            <article
-              key={item.id}
-              className={`points-card__merchant${index < items.length - 1 ? ' points-card__merchant--divider' : ''}`}
-            >
-              <div className="points-card__merchant-label">
-                <p className="points-card__merchant-title">{item.title}</p>
-                <p className="points-card__merchant-value">{item.value}</p>
-              </div>
-              <div className="points-card__tier">
-                <img src={IMAGES.crown} alt="" width={20} height={20} />
-                <span>{item.tier}</span>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-    )
-  }
+export default function PointsCard() {
+  const { user } = useAuth()
+  const { brand, brands, setActiveBrandId } = useBrand()
+  const [pickerOpen, setPickerOpen] = useState(false)
 
   return (
     <section className="points-section">
-      <p className="points-section__welcome">Welcome, {user.name}!</p>
+      {/* Header: welcome + brand selector */}
+      <div className="points-section__header">
+        <p className="points-section__welcome">Welcome, {user?.name}!</p>
+        <button className="points-section__brand-btn" onClick={() => setPickerOpen(true)}>
+          <span className="points-section__brand-name">{brand.name}</span>
+          <span className="points-section__caret">
+            <span className="points-section__caret-path">
+              <img src={IMAGES.chevronLeft} alt="" />
+            </span>
+          </span>
+        </button>
+      </div>
 
+      {/* Card */}
       <div className="points-card">
         <div className="points-card__col">
-          <div>
+          <div className="points-card__label-block">
             <p className="points-card__label">Total points</p>
-            <p className="points-card__value">{user.points} pts</p>
+            <p className="points-card__value">{brand.points}</p>
           </div>
 
-          <div className="points-card__tier">
-            <img src={IMAGES.crown} alt="" width={20} height={20} />
-            <span>{user.tier}</span>
+          <div className="points-card__tier-wrapper">
+            <div className="points-card__tier">
+              <img src={IMAGES.crown} alt="" width={20} height={20} />
+              <span>{brand.tier}</span>
+            </div>
+            <p className="points-card__hint">{brand.nextTierHint}</p>
           </div>
-
-          <p className="points-card__updated">{user.memberId}</p>
         </div>
 
         <div className="points-card__hero" aria-hidden="true">
           <img src={IMAGES.heroCoins} alt="" />
         </div>
       </div>
+
+      {pickerOpen && (
+        <BrandPicker
+          brands={brands}
+          activeBrandId={brand.id}
+          onSelect={setActiveBrandId}
+          onClose={() => setPickerOpen(false)}
+        />
+      )}
     </section>
   )
 }
