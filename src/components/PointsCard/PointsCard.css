@@ -22,6 +22,51 @@
   width: 100%;
 }
 
+.points-card--multi {
+  padding: 0;
+  overflow: hidden;
+}
+
+.points-card__merchant {
+  padding: 26px 24px;
+}
+
+.points-card__merchant--divider {
+  border-bottom: 1px solid #d2d2d2;
+}
+
+.points-card__merchant-title {
+  font-size: clamp(22px, 5.8vw, 43px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #272b32;
+}
+
+.points-card__merchant-value {
+  margin-top: 16px;
+  font-size: clamp(48px, 8.4vw, 64px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: #272b32;
+}
+
+.points-card__tier--multi {
+  margin-top: 24px;
+  gap: 12px;
+}
+
+.points-card__tier--multi span {
+  font-size: clamp(38px, 6.2vw, 51px);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.points-card__tier--multi img {
+  width: clamp(30px, 4vw, 34px);
+  height: clamp(30px, 4vw, 34px);
+}
+
 .points-card__col {
   display: flex;
   flex-direction: column;
@@ -64,7 +109,7 @@
 .points-card__updated {
   font-size: 14px;
   font-weight: 400;
-  line-height: px;
+  line-height: 20px;
   color: #000;
 }
 
