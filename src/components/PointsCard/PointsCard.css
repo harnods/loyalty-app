@@ -28,43 +28,38 @@
 }
 
 .points-card__merchant {
-  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
 }
 
 .points-card__merchant--divider {
-  border-bottom: 1px solid #d2d2d2;
+  border-bottom: 1px solid #f0f1f3;
+}
+
+.points-card__merchant-label {
+  display: flex;
+  flex-direction: column;
 }
 
 .points-card__merchant-title {
-  font-size: clamp(22px, 5.8vw, 43px);
-  font-weight: 700;
-  line-height: 1.1;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
   color: #272b32;
+  white-space: nowrap;
 }
 
 .points-card__merchant-value {
-  margin-top: 16px;
-  font-size: clamp(48px, 8.4vw, 64px);
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
   font-weight: 700;
-  line-height: 1;
+  line-height: 32px;
   letter-spacing: -1px;
   color: #272b32;
-}
-
-.points-card__tier--multi {
-  margin-top: 24px;
-  gap: 12px;
-}
-
-.points-card__tier--multi span {
-  font-size: clamp(38px, 6.2vw, 51px);
-  font-weight: 600;
-  line-height: 1.1;
-}
-
-.points-card__tier--multi img {
-  width: clamp(30px, 4vw, 34px);
-  height: clamp(30px, 4vw, 34px);
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .points-card__col {

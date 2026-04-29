@@ -19,11 +19,12 @@ export default function PointsCard({ user }) {
               key={item.id}
               className={`points-card__merchant${index < items.length - 1 ? ' points-card__merchant--divider' : ''}`}
             >
-              <p className="points-card__merchant-title">{item.title}</p>
-              <p className="points-card__merchant-value">{item.value}</p>
-
-              <div className="points-card__tier points-card__tier--multi">
-                <img src={IMAGES.crown} alt="" width={34} height={34} />
+              <div className="points-card__merchant-label">
+                <p className="points-card__merchant-title">{item.title}</p>
+                <p className="points-card__merchant-value">{item.value}</p>
+              </div>
+              <div className="points-card__tier">
+                <img src={IMAGES.crown} alt="" width={20} height={20} />
                 <span>{item.tier}</span>
               </div>
             </article>
