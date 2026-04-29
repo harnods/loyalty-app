@@ -38,8 +38,12 @@ export default function OtpPage() {
       setError('Incorrect OTP. Use 123456 for now.')
       return
     }
+    const signedInName = mode === 'signup'
+      ? name
+      : (phone === '087880851479' ? 'Lisa' : 'Dona')
+
     login({
-      name: mode === 'signup' ? name : 'Dona',
+      name: signedInName,
       phone,
     })
     if (mode === 'signup') {

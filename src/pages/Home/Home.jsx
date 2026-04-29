@@ -19,10 +19,15 @@ export default function Home() {
   const [pinSheetDismissed, setPinSheetDismissed] = useState(false)
   const showPinSheet = location.state?.setupPin && !user?.pin && !pinSheetDismissed
 
+  const homeUser = {
+    ...USER,
+    ...user,
+  }
+
   return (
     <>
-      <Header userName={USER.name} />
-      <PointsCard user={USER} />
+      <Header userName={homeUser.name} />
+      <PointsCard user={homeUser} />
       <QuickActions actions={QUICK_ACTIONS} />
       <VoucherSection vouchers={VOUCHERS.filter((v) => v.status === 'Active')} onSelect={setSelectedVoucher} />
       <Footer />

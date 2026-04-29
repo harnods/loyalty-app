@@ -4,8 +4,13 @@ import { useAuth } from '../../contexts/AuthContext'
 import { IMAGES } from '../../data/loyalty'
 import './auth.css'
 
+const LOGIN_PHONE_OPTIONS = [
+  { label: '087880851479', value: '087880851479' },
+  { label: 'Random number', value: '081234567890' },
+]
+
 export default function SignInPage() {
-  const [phone, setPhone] = useState('')
+  const [phone, setPhone] = useState(LOGIN_PHONE_OPTIONS[0].value)
   const [error, setError] = useState('')
   const navigate = useNavigate()
   const { user } = useAuth()
@@ -14,12 +19,12 @@ export default function SignInPage() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    const cleaned = phone.replace(/\D/g, '')
-    if (cleaned.length < 10) {
-      setError('Enter a valid phone number (min 10 digits)')
+    if (!phone) {
+      setError('Please select a phone number')
       return
     }
-    navigate('/otp', { state: { mode: 'signin', phone: cleaned } })
+
+    navigate('/otp', { state: { mode: 'signin', phone } })
   }
 
   return (
@@ -33,16 +38,21 @@ export default function SignInPage() {
           <div className="auth-form">
             <div className="auth-input-group">
               <label className="auth-label" htmlFor="phone">Phone number</label>
-              <input
+              <select
                 id="phone"
                 className={`auth-input${error ? ' auth-input--error' : ''}`}
-                type="tel"
-                placeholder="e.g. 08123456789"
                 value={phone}
-                onChange={(e) => { setPhone(e.target.value); setError('') }}
-                autoComplete="tel"
-                autoFocus
-              />
+                onChange={(e) => {
+                  setPhone(e.target.value)
+                  setError('')
+                }}
+              >
+                {LOGIN_PHONE_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
               {error && <p className="auth-error">{error}</p>}
             </div>
             <div className="auth-btn-group">
