@@ -9,11 +9,20 @@ import { IMAGES } from '../../data/loyalty'
 import { useBrand } from '../../contexts/BrandContext'
 import './AccountPage.css'
 
+function formatBirthday(iso) {
+  if (!iso) return null
+  const [y, m, d] = iso.split('-')
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+  return `${parseInt(d, 10)} ${months[parseInt(m, 10) - 1]} ${y}`
+}
+
 export default function AccountPage() {
-  const { user, logout, savePin } = useAuth()
+  const { user, logout, savePin, saveBirthday } = useAuth()
   const { brand } = useBrand()
   const navigate = useNavigate()
   const [pinSheetMode, setPinSheetMode] = useState(null) // null | 'create' | 'change'
+  const [editingBirthday, setEditingBirthday] = useState(false)
+  const [birthdayDraft, setBirthdayDraft] = useState(user?.birthday ?? '')
 
   function handleSignOut() {
     logout()
@@ -22,6 +31,16 @@ export default function AccountPage() {
 
   function handlePinSuccess(pin) {
     savePin(pin)
+  }
+
+  function handleBirthdaySave() {
+    saveBirthday(birthdayDraft)
+    setEditingBirthday(false)
+  }
+
+  function handleBirthdayEdit() {
+    setBirthdayDraft(user?.birthday ?? '')
+    setEditingBirthday(true)
   }
 
   const hasPin = Boolean(user?.pin)
@@ -44,6 +63,34 @@ export default function AccountPage() {
               <div className="ac-item">
                 <p className="ac-item__label">Name</p>
                 <p className="ac-item__value">{user?.name}</p>
+              </div>
+              <div className="ac-item">
+                <p className="ac-item__label">Birthday</p>
+                {editingBirthday ? (
+                  <div className="ac-birthday-edit">
+                    <input
+                      className="ac-birthday-input"
+                      type="date"
+                      value={birthdayDraft}
+                      onChange={(e) => setBirthdayDraft(e.target.value)}
+                    />
+                    <div className="ac-birthday-actions">
+                      <button className="ac-birthday-btn ac-birthday-btn--cancel" onClick={() => setEditingBirthday(false)}>Cancel</button>
+                      <button className="ac-birthday-btn ac-birthday-btn--save" onClick={handleBirthdaySave} disabled={!birthdayDraft}>Save</button>
+                    </div>
+                  </div>
+                ) : (
+                  <button className="ac-birthday-row" onClick={handleBirthdayEdit}>
+                    <span className={`ac-item__value${!user?.birthday ? ' ac-item__value--unset' : ''}`}>
+                      {user?.birthday ? formatBirthday(user.birthday) : 'Not set'}
+                    </span>
+                    <span className="ac-pin-row__chevron">
+                      <span className="ac-pin-row__chevron-path">
+                        <img src={IMAGES.chevronLeft} alt="" style={{ transform: 'rotate(180deg)' }} />
+                      </span>
+                    </span>
+                  </button>
+                )}
               </div>
               <div className="ac-item">
                 <p className="ac-item__label">Member ID</p>
