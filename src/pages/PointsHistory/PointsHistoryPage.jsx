@@ -5,16 +5,20 @@ import { useBrand } from '../../contexts/BrandContext'
 import './PointsHistoryPage.css'
 
 function TransactionRow({ tx, isLast }) {
+  const isPending = tx.status === 'pending'
   return (
     <div className={`ph-row${isLast ? ' ph-row--last' : ''}`}>
       <div className="ph-row__col">
-        <p className="ph-row__title">{tx.title}</p>
+        <div className="ph-row__title-row">
+          <p className="ph-row__title">{tx.title}</p>
+          {isPending && <span className="ph-badge ph-badge--pending">Pending</span>}
+        </div>
         <div className="ph-row__meta">
           <span>{tx.date}</span>
           {tx.location && <span>{tx.location}</span>}
         </div>
       </div>
-      <p className={`ph-row__points${tx.points.startsWith('-') ? ' ph-row__points--negative' : ''}`}>{tx.points}</p>
+      <p className={`ph-row__points${isPending ? ' ph-row__points--pending' : tx.points.startsWith('-') ? ' ph-row__points--negative' : ''}`}>{tx.points}</p>
     </div>
   )
 }

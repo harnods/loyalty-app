@@ -262,7 +262,7 @@ const TOMODACHI_HISTORY = {
       id: 'apr-2026',
       month: 'April 2026',
       transactions: [
-        { id: 1, title: 'In-store visit',               date: '21 Apr, 12:10', location: 'Sudirman Branch', points: '+200' },
+        { id: 1, title: 'In-store visit',               date: '21 Apr, 12:10', location: 'Sudirman Branch', points: '+200', status: 'pending' },
         { id: 2, title: 'Redeemed: Buy 1 get 1 coffee', date: '1 Apr, 09:00',  location: null,              points: '-120' },
         { id: 3, title: 'Weekend bonus',                 date: '1 Apr, 08:00',  location: null,              points: '+500' },
       ],
