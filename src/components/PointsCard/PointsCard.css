@@ -40,31 +40,10 @@
   letter-spacing: 0;
 }
 
-/* Caret — chevronLeft rotated -90° (pointing down) */
 .points-section__caret {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-  overflow: hidden;
-  transform: rotate(-90deg);
-}
-
-.points-section__caret-path {
-  position: absolute;
-  top: 26.25%;
-  right: 36.25%;
-  bottom: 26.25%;
-  left: 36.25%;
-}
-
-.points-section__caret-path img {
-  position: absolute;
   display: block;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  max-width: none;
+  flex-shrink: 0;
+  transform: rotate(-90deg);
 }
 
 /* ── Card ─────────────────────────────────────────────────────────────────── */
@@ -141,20 +120,13 @@
 /* Hero illustration */
 .points-card__hero {
   position: absolute;
-  top: -8px;
-  right: 8px;
-  width: 132px;
-  height: 128px;
-  overflow: hidden;
+  top: -12px;
+  right: 0;
   pointer-events: none;
 }
 
 .points-card__hero img {
-  position: absolute;
-  width: 105.96%;
-  height: 111.72%;
-  left: -5.82%;
-  top: -8.82%;
-  max-width: none;
   display: block;
+  width: 115px;
+  height: 128px;
 }

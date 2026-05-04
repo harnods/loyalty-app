@@ -17,11 +17,7 @@ export default function PointsCard() {
         <p className="points-section__welcome">Welcome, {user?.name}!</p>
         <button className="points-section__brand-btn" onClick={() => setPickerOpen(true)}>
           <span className="points-section__brand-name">{brand.name}</span>
-          <span className="points-section__caret">
-            <span className="points-section__caret-path">
-              <img src={IMAGES.chevronLeft} alt="" />
-            </span>
-          </span>
+          <img src={IMAGES.caretDown} alt="" width={20} height={20} className="points-section__caret" />
         </button>
       </div>
 

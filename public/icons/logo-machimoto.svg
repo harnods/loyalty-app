@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148 44" fill="none">
+  <!-- Dog face -->
+  <circle cx="22" cy="22" r="20" fill="#E8EDFF"/>
+  <!-- Ears -->
+  <ellipse cx="12" cy="9" rx="5" ry="7" fill="#272B32" transform="rotate(-20 12 9)"/>
+  <ellipse cx="32" cy="9" rx="5" ry="7" fill="#272B32" transform="rotate(20 32 9)"/>
+  <!-- Eyes -->
+  <circle cx="17" cy="22" r="2" fill="#272B32"/>
+  <circle cx="27" cy="22" r="2" fill="#272B32"/>
+  <!-- Nose -->
+  <ellipse cx="22" cy="28" rx="3" ry="2" fill="#272B32"/>
+  <!-- Text -->
+  <text x="48" y="18" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#272B32">machi</text>
+  <text x="48" y="34" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#272B32">moto</text>
+  <!-- Tagline -->
+  <text x="108" y="18" font-family="Inter, sans-serif" font-size="7" fill="#656F80">eat</text>
+  <text x="108" y="27" font-family="Inter, sans-serif" font-size="7" fill="#656F80">drink</text>
+  <text x="108" y="36" font-family="Inter, sans-serif" font-size="7" fill="#656F80">play</text>
+</svg>
